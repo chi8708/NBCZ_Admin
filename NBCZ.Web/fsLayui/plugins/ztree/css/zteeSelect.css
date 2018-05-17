@@ -1,0 +1,13 @@
+﻿.ztree-select ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+.ztree-select li {
+    list-style: none;
+}
+
+.ztree-select ul.list, .ztree-select .menuContent {
+    width: 188px;
+    border: 1px solid #ddd;
+}

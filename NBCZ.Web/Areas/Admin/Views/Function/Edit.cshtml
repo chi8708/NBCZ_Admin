@@ -1,0 +1,89 @@
+﻿@model NBCZ.Model.Pub_Function
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+    @Styles.Render("~/fsLayui/css")
+    @Scripts.Render("~/fsLayui/js")
+    @Scripts.Render(new string[] { "~/fsLayui/plugins/frame/js/frame.js" })
+    <link href="~/fsLayui/plugins/ztree/css/zteeSelect.css" rel="stylesheet" />
+    <script src="~/fsLayui/plugins/ztree/js/ztreeSelect.js"></script>
+</head>
+<body>
+    <div class="layui-fluid">
+        <form class="layui-form" isload="1" isurlparamrender="0">
+            <div class="layui-form-item">
+                <label class="layui-form-label">父级：</label>
+                <div class="layui-input-block">
+                    @Html.Action("FunctionTreeSelect", new { selectNode = Model.ParentCode })
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">中文名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="FunctionChina" value="@Model.FunctionChina" required="" lay-verify="required" placeholder="请输入中文名" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">英文名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="FunctionEnglish" value="@Model.FunctionEnglish" required="" lay-verify="required" placeholder="请输入英文名" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否菜单：</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="MenuFlag" value="True" title="是" @(Model.MenuFlag ? "checked" : "")>
+                    <input type="radio" name="MenuFlag" value="False" title="否" @(!Model.MenuFlag ? "checked" : "")>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Url：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="URLString" value="@Model.URLString" placeholder="请输入Url" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">排序号：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sortidx" value="@Model.sortidx" placeholder="请输入排序号" value="99" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图标样式：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="MenuIcon" value="@Model.MenuIcon" placeholder="请输入图标样式" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <textarea name="FunctionDescrip" placeholder="请输入备注" class="layui-textarea">@Model.FunctionDescrip</textarea>
+                </div>
+            </div>
+            <hr />
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    @*topredirecturl="@Url.ActionAdmin("Index", new { selectNode = ViewBag.parentCode })"*@
+                    <button class="layui-btn" lay-submit="" nourl="1" calljs="onSuccess">编辑</button>
+                    <button type="button" class="layui-btn layui-btn-primary" function="close">关闭</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        function onSuccess(rep) {
+            var url = "Index?selectNode=" + rep.results.data;
+            reloadFrame("Function/Index", url);
+        }
+    </script>
+
+</body>
+</html>

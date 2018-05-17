@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD068C7B-F671-4822-A13A-4D355CC8516A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NBCZ.Web</RootNamespace>
+    <AssemblyName>NBCZ.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.0\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DapperExtensions, Version=1.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DapperExtensions.1.6.3\lib\net45\DapperExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\BaseAdmin\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Authorization.cs" />
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MyViewEngine.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebException.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DepartmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FunctionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="NBCZUser.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AdminUrlHelper.cs" />
+    <Compile Include="Models\AuthConst\FunctionAuth.cs" />
+    <Compile Include="Models\AuthConst\DepartmentAuth.cs" />
+    <Compile Include="Models\AuthConst\RoleAuth.cs" />
+    <Compile Include="Models\AuthConst\UserInfoAuth.cs" />
+    <Compile Include="Models\FSMapper.cs" />
+    <Compile Include="Models\FSRep.cs" />
+    <Compile Include="Models\FSTree.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fsLayui\404.html" />
+    <Content Include="fsLayui\css\fs.css" />
+    <Content Include="fsLayui\css\layui-select-multiple.css" />
+    <Content Include="fsLayui\plugins\font-awesome\css\font-awesome.css" />
+    <Content Include="fsLayui\plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="fsLayui\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fsLayui\plugins\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="fsLayui\images\2017-12-20_17-29-51.gif" />
+    <Content Include="fsLayui\images\2017-12-20_17-48-15.gif" />
+    <Content Include="fsLayui\images\2017-12-26_10-50-53.gif" />
+    <Content Include="fsLayui\images\add.png" />
+    <Content Include="fsLayui\images\datagrid.png" />
+    <Content Include="fsLayui\images\face.jpg" />
+    <Content Include="fsLayui\images\favicon.ico" />
+    <Content Include="fsLayui\images\font\iconfont.js" />
+    <Content Include="fsLayui\images\font\iconfont.svg" />
+    <Content Include="fsLayui\images\left.gif" />
+    <Content Include="fsLayui\images\linkageDatagrid2.png" />
+    <Content Include="fsLayui\images\login-bg.jpg" />
+    <Content Include="fsLayui\images\login-bg1.jpg" />
+    <Content Include="fsLayui\images\login-bg2.jpg" />
+    <Content Include="fsLayui\images\login-bg3.jpg" />
+    <Content Include="fsLayui\images\menu.png" />
+    <Content Include="fsLayui\images\menu_o.png" />
+    <Content Include="fsLayui\images\multiDatagrid.png" />
+    <Content Include="fsLayui\images\right.gif" />
+    <Content Include="fsLayui\images\temp-bg.jpg" />
+    <Content Include="fsLayui\images\treeDatagrid.png" />
+    <Content Include="fsLayui\images\zhifu.png" />
+    <Content Include="fsLayui\index.html" />
+    <Content Include="fsLayui\plugins\contextMenu\jquery.contextMenu.min.css" />
+    <Content Include="fsLayui\plugins\contextMenu\jquery.contextMenu.min.js" />
+    <Content Include="fsLayui\plugins\echarts\echarts.min.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsFrame.js" />
+    <Content Include="fsLayui\plugins\frame\js\frame.js" />
+    <Content Include="fsLayui\plugins\frame\js\fs.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsButtonCommon.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsCommon.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsConfig.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsDatagrid.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsDict.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsForm.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsMenu.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsTab.js" />
+    <Content Include="fsLayui\plugins\frame\js\fsTree.js" />
+    <Content Include="fsLayui\plugins\frame\js\main.js" />
+    <Content Include="fsLayui\plugins\frame\views\upload.html" />
+    <Content Include="fsLayui\plugins\jquery\jquery.min.js" />
+    <Content Include="fsLayui\plugins\layui\css\layui.css" />
+    <Content Include="fsLayui\plugins\layui\css\layui.mobile.css" />
+    <Content Include="fsLayui\plugins\layui\css\modules\code.css" />
+    <Content Include="fsLayui\plugins\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="fsLayui\plugins\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="fsLayui\plugins\layui\css\modules\layer\default\icon.png" />
+    <Content Include="fsLayui\plugins\layui\css\modules\layer\default\layer.css" />
+    <Content Include="fsLayui\plugins\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="fsLayui\plugins\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="fsLayui\plugins\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="fsLayui\plugins\layui\font\iconfont.svg" />
+    <Content Include="fsLayui\plugins\layui\images\face\0.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\1.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\10.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\11.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\12.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\13.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\14.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\15.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\16.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\17.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\18.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\19.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\2.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\20.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\21.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\22.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\23.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\24.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\25.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\26.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\27.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\28.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\29.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\3.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\30.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\31.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\32.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\33.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\34.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\35.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\36.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\37.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\38.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\39.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\4.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\40.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\41.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\42.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\43.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\44.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\45.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\46.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\47.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\48.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\49.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\5.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\50.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\51.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\52.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\53.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\54.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\55.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\56.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\57.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\58.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\59.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\6.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\60.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\61.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\62.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\63.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\64.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\65.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\66.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\67.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\68.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\69.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\7.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\70.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\71.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\8.gif" />
+    <Content Include="fsLayui\plugins\layui\images\face\9.gif" />
+    <Content Include="fsLayui\plugins\layui\layui.all.js" />
+    <Content Include="fsLayui\plugins\layui\layui.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\carousel.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\code.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\element.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\flow.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\form.bak.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\form.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\jquery.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\laydate.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\layedit.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\layer.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\laypage.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\laytpl.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\mobile.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\table.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\tree.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\upload.js" />
+    <Content Include="fsLayui\plugins\layui\lay\modules\util.js" />
+    <Content Include="fsLayui\plugins\pace\pace-theme-flash.css" />
+    <Content Include="fsLayui\plugins\pace\pace.min.js" />
+    <Content Include="fsLayui\plugins\ztree\css\awesomeStyle\awesome.css" />
+    <Content Include="fsLayui\plugins\ztree\css\awesomeStyle\img\loading.gif" />
+    <Content Include="fsLayui\plugins\ztree\css\metroStyle\img\line_conn.png" />
+    <Content Include="fsLayui\plugins\ztree\css\metroStyle\img\loading.gif" />
+    <Content Include="fsLayui\plugins\ztree\css\metroStyle\img\metro.gif" />
+    <Content Include="fsLayui\plugins\ztree\css\metroStyle\img\metro.png" />
+    <Content Include="fsLayui\plugins\ztree\css\metroStyle\metroStyle.css" />
+    <Content Include="fsLayui\plugins\ztree\css\zteeSelect.css" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\1_close.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\1_open.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\2.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\3.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\4.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\5.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\6.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\7.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\8.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\diy\9.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\line_conn.gif" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\loading.gif" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="fsLayui\plugins\ztree\css\zTreeStyle\zTreeStyle.css" />
+    <Content Include="fsLayui\plugins\ztree\js\jquery.ztree.all.min.js" />
+    <Content Include="fsLayui\scripts\home\index.js" />
+    <Content Include="fsLayui\plugins\ztree\js\ztreeSelect.js" />
+    <Content Include="fsLayui\views\complexDatagrid\add.html" />
+    <Content Include="fsLayui\views\complexDatagrid\addParam.html" />
+    <Content Include="fsLayui\views\complexDatagrid\edit.html" />
+    <Content Include="fsLayui\views\complexDatagrid\editParam.html" />
+    <Content Include="fsLayui\views\complexDatagrid\index.html" />
+    <Content Include="fsLayui\views\complexDatagrid\paramIndex.html" />
+    <Content Include="fsLayui\views\datagrid2\index.html" />
+    <Content Include="fsLayui\views\datagrid2\one.html" />
+    <Content Include="fsLayui\views\datagrid\add.html" />
+    <Content Include="fsLayui\views\datagrid\edit.html" />
+    <Content Include="fsLayui\views\datagrid\index.html" />
+    <Content Include="fsLayui\views\home\index.html" />
+    <Content Include="fsLayui\views\linkageDatagrid2\index.html" />
+    <Content Include="fsLayui\views\linkageDatagrid\index.html" />
+    <Content Include="fsLayui\views\multiDatagrid\index.html" />
+    <Content Include="fsLayui\views\staticDatagrid\add.html" />
+    <Content Include="fsLayui\views\staticDatagrid\index.html" />
+    <Content Include="fsLayui\views\tabDatagrid\add.html" />
+    <Content Include="fsLayui\views\tabDatagrid\edit.html" />
+    <Content Include="fsLayui\views\tabDatagrid\index.html" />
+    <Content Include="fsLayui\views\treeDatagrid\add.html" />
+    <Content Include="fsLayui\views\treeDatagrid\addFunc.html" />
+    <Content Include="fsLayui\views\treeDatagrid\edit.html" />
+    <Content Include="fsLayui\views\treeDatagrid\editFunc.html" />
+    <Content Include="fsLayui\views\treeDatagrid\index.html" />
+    <Content Include="fsLayui\ZtreeSelect.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="NoAuth.html" />
+    <Content Include="Scripts\Auth.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fsLayui\images\font\iconfont.eot" />
+    <Content Include="fsLayui\images\font\iconfont.ttf" />
+    <Content Include="fsLayui\images\font\iconfont.woff" />
+    <Content Include="fsLayui\plugins\contextMenu\font\context-menu-icons.eot" />
+    <Content Include="fsLayui\plugins\contextMenu\font\context-menu-icons.ttf" />
+    <Content Include="fsLayui\plugins\contextMenu\font\context-menu-icons.woff" />
+    <Content Include="fsLayui\plugins\contextMenu\font\context-menu-icons.woff2" />
+    <Content Include="fsLayui\plugins\layui\font\iconfont.eot" />
+    <Content Include="fsLayui\plugins\layui\font\iconfont.ttf" />
+    <Content Include="fsLayui\plugins\layui\font\iconfont.woff" />
+    <Content Include="fsLayui\plugins\ztree\css\awesomeStyle\awesome.less" />
+    <Content Include="fsLayui\plugins\ztree\css\awesomeStyle\fa.less" />
+    <Content Include="fsLayui\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="fsLayui\plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fsLayui\plugins\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="fsLayui\plugins\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="fsLayui\plugins\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="fsLayui\plugins\font-awesome\less\animated.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\bordered-pulled.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\core.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\fixed-width.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\font-awesome.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\icons.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\larger.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\list.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\mixins.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\path.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\rotated-flipped.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\screen-reader.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\stacked.less" />
+    <Content Include="fsLayui\plugins\font-awesome\less\variables.less" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\font-awesome.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_animated.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_core.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_icons.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_larger.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_list.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_mixins.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_path.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_stacked.scss" />
+    <Content Include="fsLayui\plugins\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="log4net.config" />
+    <Content Include="Areas\Admin\Views\Department\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Department\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Department\DeptTreeSelect.cshtml" />
+    <Content Include="Areas\Admin\Views\Department\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Function\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Function\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Function\FunctionTreeSelect.cshtml" />
+    <Content Include="Areas\Admin\Views\Function\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UserFunctionEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\RoleFunctionEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\EditPassWord.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NBCZ.BLL\NBCZ.BLL.csproj">
+      <Project>{65ca75b9-f952-44f1-ada3-cc199e3e73a4}</Project>
+      <Name>NBCZ.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NBCZ.Common\NBCZ.Common.csproj">
+      <Project>{f331c30c-341d-4408-908d-8f47ac17e1dc}</Project>
+      <Name>NBCZ.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NBCZ.Model\NBCZ.Model.csproj">
+      <Project>{e3560d2c-b1ae-41bd-8a18-1de9b9a6a0ba}</Project>
+      <Name>NBCZ.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>38872</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:38873/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

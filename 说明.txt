@@ -1,0 +1,14 @@
+1.copy文件夹修改文件夹及sln、csproj、user文件名称
+
+2.修改sln、csproj内容 将NBCZ修改为项目命名空间
+
+3.用vs打开项目 整个解决方案替换将NBCZ修改为项目命名空间
+
+4.删除web下的obj和bin 重新生成项目。不修改可能报错
+路由集合中已存在名为“Admin_default”的路由。路由名称必须唯一。
+
+根据数据库生成代码
+1.还原数据库db→NBCZ
+2.配置 DBUtility项目下的DbEntity.ttinclude
+3.配置 web.config 数据库连接
+

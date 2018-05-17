@@ -1,0 +1,65 @@
+﻿@model NBCZ.Model.Pub_Department
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+    @Styles.Render("~/fsLayui/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+    @Scripts.Render("~/fsLayui/js")
+    @Scripts.Render(new string[] { "~/fsLayui/plugins/frame/js/frame.js" })
+    <link href="~/fsLayui/plugins/ztree/css/zteeSelect.css" rel="stylesheet" />
+    <script src="~/fsLayui/plugins/ztree/js/ztreeSelect.js"></script>
+
+</head>
+<body>
+    <div class="layui-fluid">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">父级：</label>
+                <div class="layui-input-block">
+                    @Html.Action("DeptTreeSelect", new { selectNode = ViewBag.parentCode })
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="DeptName" required="" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <textarea name="Remark" placeholder="请输入备注" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <hr />
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    @*topredirecturl="@Url.ActionAdmin("Index", new { selectNode = ViewBag.parentCode })"*@
+                    <button class="layui-btn" lay-submit="" nourl="1" calljs="onSuccess">新增</button>
+                    <button type="button" class="layui-btn layui-btn-primary" function="close">关闭</button>
+                </div>
+            </div>
+
+            <input type="hidden" name="ParentName" value="@ViewBag.parentName" />
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function onSuccess(rep) {
+            var url = "Index?selectNode=" + rep.results.data;
+            reloadFrame("Department/Index", url);
+        }
+    </script>
+
+</body>
+</html>

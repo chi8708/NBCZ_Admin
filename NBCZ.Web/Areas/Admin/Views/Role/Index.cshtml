@@ -1,0 +1,102 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>角色</title>
+
+    @Styles.Render("~/fsLayui/css")
+    @Scripts.Render("~/fsLayui/js")
+    @Scripts.Render(new string[] { "~/fsLayui/plugins/frame/js/frame.js" })
+    <link href="~/fsLayui/plugins/ztree/css/zteeSelect.css" rel="stylesheet" />
+    <script src="~/fsLayui/plugins/ztree/js/ztreeSelect.js"></script>
+</head>
+<body>
+    <div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space1">
+                <div class="layui-col-sm12">
+                    <div class="layui-form-query search-More">
+
+                        <form class="layui-form" id="query_form" tableid="fsDatagrid">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-mid">角色编码：</label>
+                                    <div class="layui-input-inline " style="width: 100px;">
+                                        <input type="tel" name="SL_RoleCode" class="layui-input layui-show-sm-inline " />
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-mid">角色名：</label>
+                                    <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="SL_RoleName" autocomplete="off" class="layui-input" />
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-mid">修改时间：</label>
+                                    <div class="layui-input-inline" style="">
+                                        <input type="text" name="createDate" readonly autocomplete="off" class="layui-input fsDate" daterange="1" placeholder=" - " />
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <div class="layui-input-inline">
+                                        <button class="layui-btn layui-btn-sm" type="button" function="query"><i class="layui-icon">&#xe615;</i>查询</button>
+                                    </div>
+                                </div>
+                                @*<i class="layui-icon search-More-btn"  id="btnMore" style="font-size: 30px; float:right; color: #1E9FFF;cursor:pointer;">&#xe61a;</i>*@
+                            </div>
+                            <!--搜索更多-->
+                            @*<div class="layui-form-item search-More-input" style="display:none;">
+                                 <i class="layui-icon search-More-btn"  style="font-size: 30px; float:right; color: #1E9FFF;cursor:pointer;">&#xe619;</i>
+                                </div>*@
+                        </form>
+
+                    </div>
+                </div>
+                <div class="layui-col-sm12">
+                    <div class="layui-row grid-demo">
+                        <div class="layui-col-sm12">
+                            <button class="layui-btn layui-btn-sm btn-Add" function="top" topurl="@Url.ActionAdmin("Add")" topwidth="400px" ismaximize="0" topheight="300px" toptitle="新增角色">
+                                <i class="layui-icon">&#xe654;</i>新增
+                            </button>
+                            <button class="layui-btn layui-btn-danger layui-btn-sm btn-Remove" function="submit" method="get" url="@Url.ActionAdmin("DeleteBatch")" ismutidml="1" isconfirm="1" confirmmsg="是否确定删除选中的数据？" inputs="Id:">
+                                <i class="layui-icon">&#xe640;</i>批量删除
+                            </button>
+                        </div>
+                        <div class="layui-col-md12">
+                            <table id="fsDatagrid" lay-filter="fsDatagrid" class="fsDatagrid" isload="1" url="@Url.ActionAdmin("GetPage")" ispage="1" sorttype="1" pagesize="10" defaultform="query_form" height="full-140"></table>
+                            <div class="fsDatagridCols">
+                                <p type="numbers" title="#" />
+                                <p checkbox="true" />
+                                <p field="Id" title="ID" width="80" sort="true" />
+                                <p field="RoleCode" title="角色编码" width="20%" sort="true" />
+                                <p field="RoleName" title="角色名" width="20%" />
+                                <p field="Lmdt" title="修改时间" width="20%" formattype="date" />
+                                <p fixed="right" align="center" toolbar="#barDemo" title="操作" width="200" />
+                            </div>
+                            <script type="text/html" id="barDemo">
+                                <a class="layui-btn layui-btn-primary layui-btn-xs btn-Auth" lay-event="top" topurl="@Url.ActionAdmin("RoleFunctionEdit")" topwidth="400px" topheight="600px" toptitle="用户授权" inputs="RoleCode:">授权</a>
+                                <a class="layui-btn layui-btn-xs btn-Edit" lay-event="top" topurl="@Url.ActionAdmin("Edit")" topwidth="400px" topheight="300px" toptitle="编辑角色" inputs="id:$Id">编辑</a>
+                                <a class="layui-btn layui-btn-danger layui-btn-xs btn-Remove" lay-event="submit" url="@Url.ActionAdmin("Delete")" isconfirm="1" method="get" confirmmsg="是否确定删除当前记录？" inputs="Id:">删除</a>
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/Auth.js")
+    <script type="text/javascript">
+        //权限检查
+        var authData = [{ code: "@ViewData["code"+RoleAuth.ADD]", btn: [".btn-Add"] },
+        { code: "@ViewData["code"+RoleAuth.EDIT]", btn: [".btn-Edit"] },
+        { code: "@ViewData["code"+RoleAuth.REMOVE]", btn: [".btn-Remove"] },
+        { code: "@ViewData["code"+RoleAuth.AUTH]", btn: [".btn-Auth"] },
+        ];
+    </script>
+</body>
+</html>

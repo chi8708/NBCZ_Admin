@@ -1,0 +1,127 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户</title>
+
+    @Styles.Render("~/fsLayui/css")
+    @Scripts.Render("~/fsLayui/js")
+    @Scripts.Render(new string[] { "~/fsLayui/plugins/frame/js/frame.js" })
+    <link href="~/fsLayui/plugins/ztree/css/zteeSelect.css" rel="stylesheet" />
+    <script src="~/fsLayui/plugins/ztree/js/ztreeSelect.js"></script>
+</head>
+<body>
+    <div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space1">
+                <div class="layui-col-sm12">
+                    <div class="layui-form-query search-More">
+
+                        <form class="layui-form" id="query_form" tableid="fsDatagrid">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-mid">用户名：</label>
+                                    <div class="layui-input-inline " style="width: 100px;">
+                                        <input type="tel" name="SL_UserName" autocomplete="off" class="layui-input layui-show-sm-inline " />
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-mid">电话：</label>
+                                    <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="SL_Tel" autocomplete="off" class="layui-input" />
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-mid">部门：</label>
+                                    <div class="layui-input-inline">
+                                        @Html.Action("DeptTreeSelect", "Department", new { isRequired = false })
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-mid">修改时间：</label>
+                                    <div class="layui-input-inline" style="">
+                                        <input type="text" name="createDate" readonly autocomplete="off" class="layui-input fsDate" daterange="1" placeholder=" - " />
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <div class="layui-input-inline">
+                                        <button class="layui-btn layui-btn-sm" type="button" function="query"><i class="layui-icon">&#xe615;</i>查询</button>
+                                    </div>
+                                </div>
+                                @*<i class="layui-icon search-More-btn"  id="btnMore" style="font-size: 30px; float:right; color: #1E9FFF;cursor:pointer;">&#xe61a;</i>*@
+                            </div>
+                            <!--搜索更多-->
+                            @*<div class="layui-form-item search-More-input" style="display:none;">
+                                 <i class="layui-icon search-More-btn"  style="font-size: 30px; float:right; color: #1E9FFF;cursor:pointer;">&#xe619;</i>
+                                </div>*@
+                        </form>
+
+                    </div>
+                </div>
+                <div class="layui-col-sm12">
+                    <div class="layui-row grid-demo">
+                        <div class="layui-col-sm12">
+                            <button class="layui-btn layui-btn-sm btn-Add" function="top" topurl="@Url.ActionAdmin("Add")" topwidth="720px" ismaximize="0" topheight="550px" toptitle="新增用户">
+                                <i class="layui-icon">&#xe654;</i>新增
+                            </button>
+                            <button class="layui-btn layui-btn-danger layui-btn-sm btn-Remove" function="submit" method="get" url="@Url.ActionAdmin("DeleteBatch")" ismutidml="1" isconfirm="1" confirmmsg="是否确定删除选中的数据？" inputs="Id:">
+                                <i class="layui-icon">&#xe640;</i>批量删除
+                            </button>
+                        </div>
+                        <div class="layui-col-md12">
+                            <table id="fsDatagrid" lay-filter="fsDatagrid" class="fsDatagrid" isload="1" url="@Url.ActionAdmin("GetPage")" ispage="1" sorttype="1" pagesize="10" defaultform="query_form" height="full-140"></table>
+                            <div class="fsDatagridCols">
+                                <p type="numbers" title="#" />
+                                <p checkbox="true" />
+                                <p field="Id" title="ID" width="80" sort="true" />
+                                <p field="UserName" title="用户名" width="100" sort="true" />
+                                <p field="RealName" title="真实姓名" width="100" />
+                                <p field="Tel" title="电话" width="120" />
+                                <p field="DeptName" title="部门" width="120" />
+                                <p field="RoleNames" title="角色" width="160" />
+                                <p field="Sex" title="性别" width="60" templet="#SexTpl" />
+                                <p field="Lmdt" title="修改时间" width="120" formattype="date" />
+                                <p fixed="right" align="center" toolbar="#barDemo" title="操作" width="200" />
+                            </div>
+                            <script type="text/html" id="SexTpl">
+                                {{d.Sex==true?'男':'女' }}
+                            </script>
+                            <script type="text/html" id="barDemo">
+                                <a class="layui-btn layui-btn-primary layui-btn-xs btn-Auth" lay-event="top" topurl="@Url.ActionAdmin("UserFunctionEdit")" topwidth="400px" topheight="600px" toptitle="用户授权" inputs="UserCode:">授权</a>
+                                <a class="layui-btn layui-btn-xs btn-Edit" lay-event="top" topurl="@Url.ActionAdmin("Edit")" topwidth="800px" topheight="600px" toptitle="编辑用户" inputs="id:$Id">编辑</a>
+                                <a class="layui-btn layui-btn-danger layui-btn-xs btn-Remove" lay-event="submit" url="@Url.ActionAdmin("Delete")" isconfirm="1" method="get" confirmmsg="是否确定删除当前记录？" inputs="Id:">删除</a>
+                                @*<a class="layui-btn layui-btn-xs" lay-event="test2">测试</a>*@
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    @Scripts.Render("~/Scripts/Auth.js")
+    <script type="text/javascript">
+        layui.fsButton.test2 = function (elem, data, datagrid) {
+            alert("测试自定义按钮2" + JSON.stringify(data));
+        }
+        layui.fsButton.test3 = function (elem, data, datagrid) {
+            alert("测试自定义按钮3" + JSON.stringify(data));
+        }
+
+            //权限检查
+            var authData = [{ code: "@ViewData["code"+UserInfoAuth.ADD]", btn: [".btn-Add"] },
+            { code: "@ViewData["code"+UserInfoAuth.EDIT]", btn: [".btn-Edit"] },
+            { code: "@ViewData["code"+UserInfoAuth.REMOVE]", btn: [".btn-Remove"] },
+            { code: "@ViewData["code"+UserInfoAuth.AUTH]", btn: [".btn-Auth"] },
+            ];
+          
+
+    </script>
+</body>
+</html>

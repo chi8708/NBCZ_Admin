@@ -1,0 +1,93 @@
+﻿@model NBCZ.Model.Pub_User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+    <link href="~/fsLayui/css/layui-select-multiple.css" rel="stylesheet" />
+    @Styles.Render("~/fsLayui/css")
+    @Scripts.Render("~/fsLayui/js")
+    @Scripts.Render(new string[] { "~/fsLayui/plugins/frame/js/frame.js" })
+    <!--树-->
+    <link href="~/fsLayui/plugins/ztree/css/zteeSelect.css" rel="stylesheet" />
+    <script src="~/fsLayui/plugins/ztree/js/ztreeSelect.js"></script>
+</head>
+<body>
+    <div class="layui-fluid">
+        <form class="layui-form" isload="1" isurlparamrender="0">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="UserName" value="@Model.UserName" required="" lay-verify="required" placeholder="请输入昵称" class="layui-input" />
+                </div>
+                <label class="layui-form-label">密码：</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="UserPwd" value="@Model.UserPwd" lay-verify="required" placeholder="请输入密码" class="layui-input" />
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">电话：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="Tel" value="@Model.Tel" required="" placeholder="请输入电话" maxlength="20" class="layui-input" />
+                </div>
+                <label class="layui-form-label">部门：</label>
+                <div class="layui-input-inline">
+                    @Html.Action("DeptTreeSelect", "Department", new { selectNode=Model.DeptCode})
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="RealName" value="@Model.RealName" placeholder="请输入姓名" class="layui-input" />
+                </div>
+                <label class="layui-form-label" style="padding-top:8px;">性别：</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="Sex" value="True" title="男" @(Model.Sex?"checked":"") />
+                    <input type="radio" name="Sex" value="False" title="女" @(!Model.Sex ? "checked" : "")>
+                </div>
+
+                @*<input type="text" name="RoleCodes"  placeholder="请输入姓名" class="layui-input" />*@
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色：</label>
+                <div class="layui-input-block">
+                    @Html.DropDownList("Roles1", (IEnumerable<SelectListItem>)ViewBag.Roles, "请选择", new { @lay_verify = "required", multiple = "multiple", @lay_search = "lay_search", })
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">地址：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="UserAddress" value="@Model.UserAddress" placeholder="请输入地址" class="layui-input" maxlength="100" />
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <textarea name="Remark" placeholder="请输入备注" class="layui-textarea" maxlength="100">@Model.Remark</textarea>
+                </div>
+            </div>
+            <hr />
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" method="post" url="@Url.ActionAdmin("Edit")">编辑</button>
+                    <button type="button" class="layui-btn layui-btn-primary" function="close">关闭</button>
+                </div>
+            </div>
+            <input type="hidden" name="UserRoleCodes" value="@ViewBag.UserRoleCodes" />
+            @Html.HiddenFor(p=>p.Id)
+            @Html.HiddenFor(p => p.UserCode)
+            @Html.Hidden("oldUserName",Model.UserName)
+        </form>
+    </div>
+
+</body>
+</html>

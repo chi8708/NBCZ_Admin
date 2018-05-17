@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserFunction</title>
+    @Styles.Render("~/fsLayui/css")
+</head>
+<body>
+    <div class="layui-fluid" >
+        <form class="layui-form" isload="1" isurlparamrender="0">
+            <div class="layui-form-item" >
+                <fieldset class="layui-elem-field">
+                    <legend style="font-size:14px;">权限列表</legend>
+                    <div class="layui-field-box" style="height:420px;overflow-y:auto;">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-md12">
+                                <ul id="treeDemo" class="ztree fsTree" icon="" method="post" checktype="checkbox" selectnode="@ViewBag.selectNode" isroot="0" gettree="01" url="@Url.Action("GetUserFunctionTree", new { area = "Admin", userCode =ViewBag.UserCode })" treeidkey="id" treepidkey="pId" treename="name"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" method="post" onclick="saveBefore()" url="@Url.ActionAdmin("UserFunctionEdit")">保存</button>
+                    <button type="button" class="layui-btn layui-btn-primary" function="close">关闭</button>
+                </div>
+            </div>
+            <input type="hidden" id="selectValues" name="selectValues" value="@ViewBag.selectNode" />
+            <input type="hidden" id="userCode" name="userCode" value="@ViewBag.UserCode" />
+        </form>
+        @Scripts.Render("~/fsLayui/js")
+        @Scripts.Render(new string[] { "~/fsLayui/plugins/frame/js/frame.js" })
+        <script type="text/javascript">
+            function saveBefore() {
+                var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+                var nodes = treeObj.getCheckedNodes(true);
+                var vals = "";
+                for (var i = 0; i < nodes.length; i++) {
+                    vals += nodes[i].id + ',';
+                }
+                vals = vals.substring(0, vals.length - 1);
+                $("#selectValues").val(vals);
+            }
+        </script>
+    </div>
+</body>
+</html>

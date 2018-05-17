@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/fsLayui/css")
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-md3">
+                <fieldset class="layui-elem-field">
+                    <legend>权限列表</legend>
+                    <div class="layui-field-box">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-md12">
+                                <ul id="treeDemo" class="ztree fsTree" icon="" method="post" selectnode="@ViewBag.selectNode" isroot="0" gettree="01" url="@Url.Action("GetFunctionTree", new {area="Admin" })" clickcallbackid="fsDatagrid" clickcallbackinputs="menuId:$id,parentName:$name" treeidkey="id" treepidkey="pId" treename="name"></ul>
+                                <div class="fsTreeRightMenu" style="display:none;">
+                                    <p function="refresh" icon="refresh" name="刷新"></p>
+                                    @*<p function="top" icon="add" name="新增" fs:authorize="" topurl="views/treeDatagrid/add.html" topwidth="700px" topheight="460px" toptitle="新增菜单信息" inputs="parentId:$id"></p>
+                                        <p function="top" icon="edit" name="编辑" fs:authorize="" topurl="views/treeDatagrid/edit.html" topwidth="700px" topheight="460px" toptitle="编辑菜单信息" inputs="menuId:$id" disabledtype="rootNode"></p>
+                                        <p function="submit" icon="del" name="删除" fs:authorize="" method="get" url="/fsbus/S1007" isconfirm="1" confirmmsg="是否确定删除？" inputs="menuId:$id" disabledtype="parent|rootNode"></p>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="layui-col-md9">
+                <fieldset id="menu_func_div" class="layui-elem-field">
+                    <legend>同级和下级权限</legend>
+                    <div class="layui-field-box">
+                        <div class="layui-col-md12 layui-col-space1">
+                            <div id="table_buttion_div" class="demoTable">
+                                <form id="query_form" style="display: none;">
+
+                                    <input type="text" id="menuId" name="menuId" value="0" />
+                                    <!--添加就可以取到parentName-->
+                                    <input type="text" id="parentName" name="parentName" value="0" />
+                                </form>
+                                <button class="layui-btn layui-btn-sm btn-Add" function="top" topurl="@Url.ActionAdmin("Add")" selecttreeid="menuId" topwidth="700px" topheight="550px" toptitle="新增权限" inputs="parentCode:#menuId,parentName:#parentName">
+                                    <i class="layui-icon">&#xe654;</i>新增
+                                </button>
+                                @*<button id="btnRefsh" class="layui-btn layui-btn-sm"  function="refresh" selecttreeid="menuId">
+                                    <i class="layui-icon">&#x1002;</i>刷新
+                                    </button>*@
+                                <button class="layui-btn layui-btn-sm layui-btn-danger btn-Remove" calljs="deleteSuccess" function="submit" url="@Url.ActionAdmin("DeleteBatch")" isconfirm="1" confirmmsg="是否确定删除选中的数据？" inputs="FunctionCode:">
+                                    <i class="layui-icon">&#xe640;</i>删除
+                                </button>
+                            </div>
+                        </div>
+                        <div class="layui-col-md12 layui-col-space1">
+                            <table id="fsDatagrid" size="sm" class="fsDatagrid" lay-filter="fsDatagrid" url="@Url.ActionAdmin("GetChildList")" isload="0" ispage="0" defaultform="query_form" height="full-130"></table>
+                            <div class="fsDatagridCols">
+
+                                <p type="numbers" title="#" />
+                                <p checkbox="true" />
+                                <p field="FunctionCode" title="编号" width="120" space="true" />
+                                <p field="FunctionChina" title="中文名" width="140" space="true" />
+                                <p field="FunctionEnglish" title="英文名" width="150" sort="true" />
+                                <p field="editor" title="编辑人" width="100" />
+                                <p field="editdate" title="编辑时间" width="100" formattype="date" />
+                                <p fixed="right" align="center" toolbar="#barDemo" title="操作" width="150" />
+                            </div>
+                            <script type="text/html" id="barDemo">
+                                <a id="edit" href="javascript:;" class="layui-btn layui-btn-xs btn-Edit" lay-event="top" topurl="@Url.Action("Edit")" topwidth="700px" topheight="550px" isselect="1" toptitle="编辑权限" inputs="FunctionCode:">编辑</a>
+                                <a id="del" href="javascript:;" class="layui-btn layui-btn-danger layui-btn-xs btn-Remove" calljs="deleteSuccess" lay-event="submit" isconfirm="1" url="@Url.Action("Delete")" inputs="FunctionCode:">删除</a>
+                            </script>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/fsLayui/js")
+    @*@Scripts.Render(new string[] {"~/fsLayui/plugins/frame/js/frame.js" })*@
+
+    <script type="text/javascript">
+        layui.use(['fsFrame'], function () {
+            var fsFrame = layui.fsFrame;
+            fsFrame.allLoad();
+            //监听删除回调
+            window.deleteSuccess = function () {
+                fsFrame.fsTree.refresh();
+            }
+        })
+
+        //权限检查
+        var authData = [{ code: "@ViewData["code"+FunctionAuth.ADD]", btn: [".btn-Add"] },
+        { code: "@ViewData["code"+FunctionAuth.EDIT]", btn: [".btn-Edit"] },
+        { code: "@ViewData["code"+FunctionAuth.REMOVE]", btn: [".btn-Remove"] }
+        ];
+    </script>
+</body>
+</html>

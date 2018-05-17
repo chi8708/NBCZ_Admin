@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title> ZTREE DEMO - Simple Data</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="plugins/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="plugins/ztree/css/zteeSelect.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>最简单的树 -- 简单 JSON 数据</h1>
+    <h6>[ 文件路径: core/simpleData.html ]</h6>
+
+    <!--测试-->
+    <ul class="list" >
+        <li class="title">
+            &nbsp;&nbsp;城市：<input id="citySel" type="text" ids="" value="" onkeyup="AutoMatch(this)"
+                                  style="width: 120px;" />
+        </li>
+    </ul>
+
+    <div id="menuContent" class="menuContent" style="display: none; position: absolute;">
+        <ul id="treeDemo" class="ztree" style="margin-top: 0; width: 110px;"></ul>
+    </div>
+
+    <div class="ztree-select">
+        <ul class="list">
+            <li class="title">
+                &nbsp;&nbsp;城市：<input id="citySel2" type="text" ids="" value="" 
+                                      style="width: 120px;" />
+            </li>
+        </ul>
+
+        <div id="menuContent2" class="menuContent" style="display: none; position: absolute;">
+            <ul id="treeDemo2" class="ztree" style="margin-top: 0; width: 110px;"></ul>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="../../../js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="../../../js/jquery.ztree.core.js"></script>-->
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="plugins/ztree/js/jquery.ztree.all.min.js"></script>
+    <!--  <script type="text/javascript" src="../../../js/jquery.ztree.excheck.js"></script>
+      <script type="text/javascript" src="../../../js/jquery.ztree.exedit.js"></script>-->
+    <script src="plugins/ztree/js/ztreeSelect.js"></script>
+    <script type="text/javascript">
+        var setting = {
+            view: {
+                selectedMulti: true //是否允许多选
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                //zTree节点的点击事件
+                onClick: onClick
+            }
+        };
+
+        //Ztree的初始数据
+        var zNodes = [
+            { id: 1, pId: 0, name: "北京" },
+            { id: 2, pId: 0, name: "天津" },
+            { id: 3, pId: 0, name: "上海" },
+            { id: 6, pId: 0, name: "重庆" },
+            { id: 4, pId: 0, name: "河北省", open: true },
+            { id: 41, pId: 4, name: "石家庄" },
+            { id: 42, pId: 4, name: "保定" },
+            { id: 43, pId: 4, name: "邯郸" },
+            { id: 44, pId: 4, name: "承德" },
+            { id: 5, pId: 0, name: "广东省", open: true },
+            { id: 51, pId: 5, name: "广州" },
+            { id: 52, pId: 5, name: "深圳" },
+            { id: 53, pId: 5, name: "东莞" },
+            { id: 54, pId: 5, name: "佛山" },
+            { id: 6, pId: 0, name: "福建省", open: true },
+            { id: 61, pId: 6, name: "福州" },
+            { id: 62, pId: 6, name: "厦门" },
+            { id: 63, pId: 6, name: "泉州" },
+            { id: 64, pId: 6, name: "三明" }
+        ];
+
+        $(document).ready(function () {
+            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            initEvent();
+            hideMenu();
+        });
+        //点击某个节点 然后将该节点的名称赋值值文本框
+        function onClick(e, treeId, treeNode) {
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            //获得选中的节点
+            var nodes = zTree.getSelectedNodes(),
+            v = "";
+            //根据id排序
+            nodes.sort(function compare(a, b) { return a.id - b.id; });
+            for (var i = 0, l = nodes.length; i < l; i++) {
+                if (i !== 0) {
+                    v += "," + nodes[i].name;
+                }
+                v += nodes[i].name;
+            }
+            //将选中节点的名称显示在文本框内
+            var cityObj = $("#citySel");
+            cityObj.val(v);
+            //隐藏zTree
+            hideMenu();
+            return false;
+        }
+
+        //显示树
+        function showMenu() {
+            var cityObj = $("#citySel");
+            var cityOffset = $("#citySel").offset();
+            //$("#menuContent").css({ left: cityOffset.left + "px", top: cityOffset.top + cityObj.outerHeight() + "px" }).slideDown("fast");
+            $("#menuContent").slideDown("fast");
+        }
+
+        //隐藏树
+        function hideMenu() {
+            $("#menuContent").fadeOut("fast");
+            //$("body").unbind("mousedown", onBodyDown);
+        }
+
+        //还原zTree的初始数据
+        function InitialZtree() {
+            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        }
+
+
+        function initEvent() {
+            //鼠标获得焦点的时候，显示所有的树
+            $("#citySel").focus(function () {
+                $("#citySel").css("background-color", "#FFFFCC");
+                showMenu();
+            });
+        }
+
+        function AutoMatch(txtObj) {
+            if (txtObj.value.length > 0) {
+                InitialZtree();
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                var nodeList = zTree.getNodesByParamFuzzy("name", txtObj.value);
+                //将找到的nodelist节点更新至Ztree内
+                $.fn.zTree.init($("#treeDemo"), setting, nodeList);
+                showMenu();
+            } else {
+                //隐藏树
+                hideMenu();
+                InitialZtree();
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            var option = {};
+            option.zNodes = [
+                { id: 1, pId: 0, name: "北京" },
+                { id: 2, pId: 0, name: "天津" },
+                { id: 3, pId: 0, name: "上海" },
+                { id: 6, pId: 0, name: "重庆" },
+                { id: 4, pId: 0, name: "河北省", open: true },
+                { id: 41, pId: 4, name: "石家庄" },
+                { id: 42, pId: 4, name: "保定" },
+                { id: 43, pId: 4, name: "邯郸" },
+                { id: 44, pId: 4, name: "承德" },
+                { id: 5, pId: 0, name: "广东省", open: true },
+                { id: 51, pId: 5, name: "广州" },
+                { id: 52, pId: 5, name: "深圳" },
+                { id: 53, pId: 5, name: "东莞" },
+                { id: 54, pId: 5, name: "佛山" },
+                { id: 6, pId: 0, name: "福建省", open: true },
+                { id: 61, pId: 6, name: "福州" },
+                { id: 62, pId: 6, name: "厦门" },
+                { id: 63, pId: 6, name: "泉州" },
+                { id: 64, pId: 6, name: "三明" }
+            ];
+            option.treeId = "treeDemo2";
+            option.menuContent = "#menuContent2";
+            //option.selectedMulti = true;
+            //option.selectnode = "1,2";
+
+            $("#citySel2").treeSelect(option);
+        })
+
+    </script>
+</body>
+</html>
