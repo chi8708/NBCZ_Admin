@@ -20,6 +20,7 @@ namespace NBCZ.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(LoginViewModel user) 
         {
             string captcha = user.Captcha;

@@ -29,6 +29,7 @@
         <h1>NBCZ-管理登录</h1>
         @using (Ajax.BeginForm("Index", "Login", new AjaxOptions() { HttpMethod = "post" }, new { id = "divLogin", @class = "layui-form" }))
         {
+            @Html.AntiForgeryToken();
              <div class="layui-form-item">
                  <input class="layui-input" name="UserCode" id="UserCode" placeholder="用户名" lay-verify="required" type="text" autocomplete="off">
             </div>
