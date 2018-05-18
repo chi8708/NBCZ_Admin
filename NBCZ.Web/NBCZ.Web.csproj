@@ -128,6 +128,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\BaseAdmin\" />
+    <Folder Include="Areas\Admin\Views\Default1\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\User\" />
@@ -142,6 +143,7 @@
     <Compile Include="App_Start\WebException.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Default1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\DepartmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FunctionController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
