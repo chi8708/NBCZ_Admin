@@ -143,7 +143,6 @@
     <Compile Include="App_Start\WebException.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\Default1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\DepartmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FunctionController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
