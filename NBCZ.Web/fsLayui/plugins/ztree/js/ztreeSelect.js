@@ -12,7 +12,7 @@
                 checkType:"",
                 selectnode:"",
                 selectedMulti:false,
-                valuesDom:"ids"
+                valuesDom:"#ids"
             }
 
             $.extend(this,__DEFT__,option)
