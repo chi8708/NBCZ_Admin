@@ -30,14 +30,14 @@ namespace NBCZ.Web.Areas.Admin.Controllers
             }
             if (null != Session["Captcha"] && captcha.ToLower() != Session["Captcha"].ToString().ToLower())
             {
-                return JavaScript(" layer.msg('验证码不正确');");
+                return JavaScript(" layer.msg('验证码不正确');changeCaptcha();");
             }
             var dbUser = userBLL.GetList(string.Format(" StopFlag=0 AND UserName='{0}' AND UserPwd='{1}' ",
               user.UserCode,user.Password)).FirstOrDefault();
 
             if (dbUser == null)
             {
-                return JavaScript("layer.msg('用户名或密码错误！')");
+                return JavaScript("layer.msg('用户名或密码错误！');changeCaptcha();");
             }
 
             NBCZUser.WriteUser(user.UserCode);

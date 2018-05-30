@@ -39,7 +39,7 @@
             <div class="layui-form-item form_code">
                 <input class="layui-input" name="Captcha" placeholder="验证码" lay-verify="required" type="text" autocomplete="off">
                 <div class="code">
-                    <img width="116" height="36" alt="点击刷新" title="点击刷新" src="@Url.Action("Index", "Captcha", new { Area = "" })" style="vertical-align:middle;" onclick="this.src='@Url.Action("Index", "Captcha", new { Area = "" })?ts='+new Date()">
+                    <img width="116" id="imgCaptcha" height="36" alt="点击刷新" title="点击刷新" src="@Url.Action("Index", "Captcha", new { Area = "" })" style="vertical-align:middle;" onclick="this.src='@Url.Action("Index", "Captcha", new { Area = "" })?ts='+new Date()">
                 </div>
             </div>
             <button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
@@ -51,9 +51,12 @@
         })
 
         if (window.top.location.href != window.location.href) {
-            window.top.location = "/Admin/Login";
+            window.top.location = "../Admin/Login";
         };
 
+        function changeCaptcha(){
+            $("#imgCaptcha").click();
+        }
 
     </script>
 </body>
