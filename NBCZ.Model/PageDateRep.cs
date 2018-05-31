@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NBCZ.Modal
+namespace NBCZ.Model
 {
     public class PageDateRep<T> where T:class,new()
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using NBCZ.DAL;
 using DapperExtensions;
-using NBCZ.Modal;
+using NBCZ.Model;
 
 namespace NBCZ.BLL
 {

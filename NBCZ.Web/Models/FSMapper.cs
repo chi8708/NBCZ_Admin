@@ -1,4 +1,4 @@
-﻿using NBCZ.Modal;
+﻿using NBCZ.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,7 +6,7 @@ using Dapper;
 using DapperExtensions;
 using System.Data.SqlClient;
 using System.Text;
-using NBCZ.Modal;
+using NBCZ.Model;
 using System.Data;
 
 namespace NBCZ.DAL
