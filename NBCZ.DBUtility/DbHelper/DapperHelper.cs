@@ -103,6 +103,7 @@ namespace NBCZ
         {
             using (IDbConnection conn = new SqlConnection(connStr))
             {
+                conn.Open();
                 using (var transaction = conn.BeginTransaction())
                 {
                     try
