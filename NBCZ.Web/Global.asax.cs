@@ -16,10 +16,9 @@ namespace NBCZ.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            BundleTable.EnableOptimizations = false;
             //AutoMapper初始化
             AutoMapperConfig.Initialize();
-
           //  RegisterView();//注册视图访问规则（每个区域已BaseController控制）
         }
 

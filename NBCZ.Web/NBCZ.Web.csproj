@@ -449,6 +449,7 @@
     <Content Include="Areas\Admin\Views\User\UserFunctionEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Role\RoleFunctionEdit.cshtml" />
     <Content Include="Areas\Admin\Views\User\EditPassWord.cshtml" />
+    <None Include="Properties\PublishProfiles\NBCZ.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
