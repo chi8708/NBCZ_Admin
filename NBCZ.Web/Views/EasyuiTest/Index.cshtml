@@ -1,0 +1,343 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Scripts.Render("~/easyui-super/js")
+    @Styles.Render("~/easyui-super/css")
+    <style type="text/css">
+        .cs-navi-tab {
+            display:block;
+            /*width:90%;*/
+            color:#000;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 4px;
+            background-color: #F5F5F5;
+        }
+        /*定义滚动条轨道 内阴影+圆角*/
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background: #fff;
+        }
+        /*定义滑块 内阴影+圆角*/
+        ::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: rgba(7, 170, 247, 0.7);
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                border-radius: 3px;
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+                background-color: rgba(7, 170, 247, 1);
+            }  
+    </style>
+    <script type="text/javascript">
+        function addTab(title, url) {
+            if ($('#tabs').tabs('exists', title)) {
+                $('#tabs').tabs('select', title);//选中并刷新
+                var currTab = $('#tabs').tabs('getSelected');
+                var url = $(currTab.panel('options').content).attr('src');
+                if (url != undefined && currTab.panel('options').title != 'Home') {
+                    $('#tabs').tabs('update', {
+                        tab: currTab,
+                        options: {
+                            content: createFrame(url)
+                        }
+                    })
+                }
+            } else {
+                var content = createFrame(url);
+                $('#tabs').tabs('add', {
+                    title: title,
+                    content: content,
+                    closable: true
+                });
+            }
+            tabClose();
+        }
+        function createFrame(url) {
+            var s = '<iframe class="sc-set" scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:99%;"></iframe>';
+            return s;
+        }
+
+        function tabClose() {
+            /*双击关闭TAB选项卡*/
+            $(".tabs-inner").dblclick(function () {
+                var subtitle = $(this).children(".tabs-closable").text();
+                $('#tabs').tabs('close', subtitle);
+            })
+            /*为选项卡绑定右键*/
+            $(".tabs-inner").bind('contextmenu', function (e) {
+                $('#mm').menu('show', {
+                    left: e.pageX,
+                    top: e.pageY
+                });
+
+                var subtitle = $(this).children(".tabs-closable").text();
+
+                $('#mm').data("currtab", subtitle);
+                $('#tabs').tabs('select', subtitle);
+                return false;
+            });
+        }
+        //绑定右键菜单事件
+        function tabCloseEven() {
+            //刷新
+            $('#mm-tabupdate').click(function () {
+                var currTab = $('#tabs').tabs('getSelected');
+                var url = $(currTab.panel('options').content).attr('src');
+                if (url != undefined && currTab.panel('options').title != 'Home') {
+                    $('#tabs').tabs('update', {
+                        tab: currTab,
+                        options: {
+                            content: createFrame(url)
+                        }
+                    })
+                }
+            })
+            //关闭当前
+            $('#mm-tabclose').click(function () {
+                var currtab_title = $('#mm').data("currtab");
+                $('#tabs').tabs('close', currtab_title);
+            })
+            //全部关闭
+            $('#mm-tabcloseall').click(function () {
+                $('.tabs-inner span').each(function (i, n) {
+                    var t = $(n).text();
+                    if (t != 'Home') {
+                        $('#tabs').tabs('close', t);
+                    }
+                });
+            });
+            //关闭除当前之外的TAB
+            $('#mm-tabcloseother').click(function () {
+                var prevall = $('.tabs-selected').prevAll();
+                var nextall = $('.tabs-selected').nextAll();
+                if (prevall.length > 0) {
+                    prevall.each(function (i, n) {
+                        var t = $('a:eq(0) span', $(n)).text();
+                        if (t != 'Home') {
+                            $('#tabs').tabs('close', t);
+                        }
+                    });
+                }
+                if (nextall.length > 0) {
+                    nextall.each(function (i, n) {
+                        var t = $('a:eq(0) span', $(n)).text();
+                        if (t != 'Home') {
+                            $('#tabs').tabs('close', t);
+                        }
+                    });
+                }
+                return false;
+            });
+            //关闭当前右侧的TAB
+            $('#mm-tabcloseright').click(function () {
+                var nextall = $('.tabs-selected').nextAll();
+                if (nextall.length == 0) {
+                    //msgShow('系统提示','后边没有啦~~','error');
+                    alert('后边没有啦~~');
+                    return false;
+                }
+                nextall.each(function (i, n) {
+                    var t = $('a:eq(0) span', $(n)).text();
+                    $('#tabs').tabs('close', t);
+                });
+                return false;
+            });
+            //关闭当前左侧的TAB
+            $('#mm-tabcloseleft').click(function () {
+                var prevall = $('.tabs-selected').prevAll();
+                if (prevall.length == 0) {
+                    alert('到头了，前边没有啦~~');
+                    return false;
+                }
+                prevall.each(function (i, n) {
+                    var t = $('a:eq(0) span', $(n)).text();
+                    $('#tabs').tabs('close', t);
+                });
+                return false;
+            });
+
+            //退出
+            $("#mm-exit").click(function () {
+                $('#mm').menu('hide');
+            })
+        }
+
+        $(function () {
+        
+            tabCloseEven();
+            $('.cs-navi-tab').click(function () {
+                var $this = $(this);
+                var href = $this.attr('src');
+                var title = $this.text();
+                addTab(title, href);
+            });
+
+
+        });
+
+
+   
+    </script>
+</head>
+<body id="main" class="easyui-layout">
+    <div data-options="region:'north',border:false" class="super-north" style="height: 50px;">
+        <!--顶部-->
+        <div class="super-navigation">
+            <div class="super-navigation-title">SUPER THEME</div>
+            <div class="super-navigation-main">
+                <div class="super-setting-left">
+                    <ul>
+                        <li><i class="fa fa-commenting-o"></i></li>
+                        <li><i class="fa fa-envelope-o"></i></li>
+                        <li><i class="fa fa-bell-o"></i></li>
+                        <!--<div id="mm2" class="easyui-menu">
+                            <div>有情况</div>
+                            <div>你瞅啥</div>
+                            <div class="menu-sep"></div>
+                            <div>瞅你咋滴</div>
+                        </div>-->
+                    </ul>
+                </div>
+                <div class="super-setting-right">
+                    <ul>
+                        <li class="user">
+                            <span class="user-icon"><img src="../easyui-super-theme/img/favicon.png" /></span>
+                            <span>管理员</span>
+                        </li>
+                        <li>
+                            <div class="super-setting-icon">
+                                <i class="fa fa-gears"></i>
+                            </div>
+                            <div id="mm2" class="easyui-menu">
+                                <div>个人中心</div>
+                                @*<div id="themeSetting">主题</div>*@
+                                <div class="menu-sep"></div>
+                                <div id="logout">退出</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="easyui-layout-west" data-options="region:'west',title:'MAIN NAVIGATION',border:false">
+        <!--左侧导航-->
+        <div class="easyui-accordion" data-options="border:false,fit:true,selected:true">
+            <div title="基础" data-options="iconCls:'fa fa-navicon'">
+             
+                <ul>
+                    <li><a href="javascript:void(0);" src="Demo" class="cs-navi-tab">easyloader</a></li>
+                    <li><a href="javascript:void(0);" src="ddd" class="cs-navi-tab">SearchBox（搜索框</a></li>
+                    <li data-url="example/progressBar.html" >ProgressBar（进度条)</li>
+                    <li data-url='example/toolTip.html'>Tooltip（提示框）</li>
+                </ul>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,fit:true,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,fit:true,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="菜单和按钮" data-options="iconCls:'fa fa-gavel'">
+                content3
+            </div>
+            <div title="表单" data-options="iconCls:'fa fa-wpforms'">
+                content3
+            </div>
+            <div title="窗口" data-options="iconCls:'fa fa-window-maximize'">
+                content3
+            </div>
+            <div title="表格和树" data-options="iconCls:'fa fa-table'">
+                content3
+            </div>
+            <div title="扩展" data-options="iconCls:'fa fa-sitemap'">
+                content3
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'center'" style="padding-top: 2px;">
+        <!--主要内容-->
+        <div id="tabs" class="easyui-tabs" data-options="border:false,fit:true">
+            <div title="首页" data-options="iconCls:'fa fa-home'">
+                <iframe src="Demo" width="100%" height="99%" frameborder="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'south'" class="super-south">
+        <!--页脚-->
+        <div class="super-footer-info">
+            <span><i class="fa fa-info-circle"></i> 作者：××&nbsp;&nbsp;××</span>
+            <span><i class="fa fa-copyright"></i> CopyRight 2016 版权所有 <i class="fa fa-caret-right"></i></span>
+        </div>
+    </div>
+
+    <!--主题设置弹窗-->
+    <div id="win">
+        <div class="themeItem">
+            <ul>
+                <li>
+                    <div class="TURQUOISE">TURQUOISE</div>
+                </li>
+                <li>
+                    <div class="EMERALD">EMERALD</div>
+                </li>
+                <li>
+                    <div class="PETER-RIVER">PETER RIVER</div>
+                </li>
+                <li>
+                    <div class="AMETHYST">AMETHYST</div>
+                </li>
+                <li>
+                    <div class="WET-ASPHALT">WET ASPHALT</div>
+                </li>
+                <li>
+                    <div class="SUN-FLOWER">SUN FLOWER</div>
+                </li>
+                <li>
+                    <div class="CARROT">CARROT</div>
+                </li>
+                <li class="themeActive">
+                    <div class="ALIZARIN">ALIZARIN</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="mm" class="easyui-menu cs-tab-menu">
+        <div id="mm-tabupdate">刷新</div>
+        <div class="menu-sep"></div>
+        <div id="mm-tabclose">关闭</div>
+        <div id="mm-tabcloseother">关闭其他</div>
+        <div id="mm-tabcloseall">关闭全部</div>
+    </div>
+</body>
+</html>
