@@ -1,0 +1,18 @@
+[
+	{
+		"id": 1,
+		"text": "Node 1",
+		"children": [
+			{
+				"id": 11,
+				"text": "Node 11"
+			}, {
+				"id": 12,
+				"text": "Node 12"
+			}
+		]
+	}, {
+		"id": 2,
+		"text": "Node 2"
+	}
+] 

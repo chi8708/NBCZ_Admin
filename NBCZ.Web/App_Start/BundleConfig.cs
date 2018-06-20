@@ -50,6 +50,31 @@ namespace NBCZ.Web
             bundles.Add(new ScriptBundle("~/fsLayui/js/layui").Include(
            "~/fsLayui/plugins/layui/layui.js"
    ));
+
+            //easyui
+            bundles.Add(new ScriptBundle("~/easyui/js").Include(
+                "~/easyui-super-theme/easyui/jquery.min.js",
+                "~/easyui-super-theme/easyui/jquery.easyui.min.js",
+                "~/easyui-super-theme/easyui/locale/easyui-lang-zh_CN.js"
+                ));
+            bundles.Add(new StyleBundle("~/easyui/css").Include(
+             "~/easyui-super-theme/easyui/themes/icons/css/font-awesome.min.css",
+             "~/easyui-super-theme/easyui/themes/gray/easyui.css"
+             ));
+
+            bundles.Add(new ScriptBundle("~/easyui-super/js").Include(
+               "~/easyui-super-theme/easyui/jquery.min.js",
+               "~/easyui-super-theme/easyui/jquery.easyui.min.js",
+               "~/easyui-super-theme/easyui/locale/easyui-lang-zh_CN.js",
+               "~/easyui-super-theme/easyui-extensions/jeasyui.extensions.ty.js",
+               "~/easyui-super-theme/js/super.js"
+              ));
+            bundles.Add(new StyleBundle("~/easyui-super/css").Include(
+              "~/easyui-super-theme/easyui/themes/icons/css/font-awesome.min.css",
+              "~/easyui-super-theme/easyui/themes/gray/easyui.css",
+              "~/easyui-super-theme/css/superBlue.css"
+            
+             ));
         }
     }
 }

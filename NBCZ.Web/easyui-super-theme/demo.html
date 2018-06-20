@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件示例</title>
+    <!--easyui-->
+    <script src="easyui/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="easyui/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="easyui/locale/easyui-lang-zh_CN.js" type="text/javascript" charset="utf-8"></script>
+    <script src="easyui-extensions/jeasyui.extensions.ty.js" type="text/javascript" charset="utf-8"></script>
+    <!--字体图标-->
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icons/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="easyui/themes/gray/easyui.css">
+    <link rel="stylesheet" href="css/superBlue.css">
+    <script src="js/super.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        #index {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            opacity: 0;
+            font-size: 12px;
+        }
+
+        #index .demoIndex {
+            margin-right: 15px;
+        }
+
+        #index .demoIndex:last-child {
+            margin-right: 0;
+        }
+
+        #index fieldset {
+            padding: 15px;
+            border: 1px solid #ccc;
+        }
+
+        #index legend {
+            padding: 0 10px;
+        }
+
+        #index fieldset h3 {
+            margin: 10px 0;
+        }
+
+        .index-l {
+            padding: 10px;
+            width: 48%;
+            overflow: auto;
+        }
+
+        .form-item {
+            margin-bottom: 10px;
+            width: 50%;
+            float: left;
+        }
+
+        .form-item > label {
+            min-width: 72px;
+            display: inline-block;
+        }
+
+        .form-item input,
+        select {
+            width: 170px;
+        }
+
+        .contentWrapper {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="index">
+    <!--表格-->
+    <div class="index-l">
+        <table id="dg"></table>
+    </div>
+    <!--表单-->
+    <div class="index-l">
+        <div id="p" class="easyui-panel" title="panel"
+             data-options="iconCls:'fa fa-tags',closable:true,collapsible:true,minimizable:true,maximizable:true">
+            <div class="contentWrapper">
+                <form id="ff" method="post">
+                    <div class="form-item">
+                        <label for="" class="label-top">用户名：</label>
+                        <input id="username" class="easyui-validatebox easyui-textbox" prompt="请输入用户名"
+                               data-options="required:true,validType:'length[3,10]'">
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="label-top">文本输入框：</label>
+                        <input class="easyui-textbox" data-options="iconCls:'fa fa-user',iconAlign:'left'"
+                               prompt="请输入文本">
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="label-top">密码输入框：</label>
+                        <input class="easyui-passwordbox" prompt="Password" iconWidth="28">
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="label-top">下拉框：</label>
+                        <select id="ec" class="easyui-combobox" data-options="editable:false,panelHeight:null"
+                                name="dept">
+                            <option value="aa">选项1</option>
+                            <option>选项2</option>
+                            <option>伤害</option>
+                            <option>电风扇</option>
+                            <option>共担风险</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="label-top">数值输入框：</label>
+                        <input type="text" class="easyui-numberbox" value="100" data-options="min:0,precision:2"/>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="" class="label-top">日历：</label>
+                        <input id="dd" type="text" class="easyui-datebox" required="required"/>
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="label-top">数字微调：</label>
+                        <input id="ss" class="easyui-numberspinner" required="required"
+                               data-options="min:10,max:100,editable:false">
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="label-top">文件选择：</label>
+                        <input class="easyui-filebox" data-options="buttonText:'上传头像',buttonIcon:'fa fa-upload'">
+                    </div>
+                    <div class="form-item">
+                        <input class="easyui-slider" value="12" style="width:300px" data-options="showTip:true"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--按钮-->
+    <div class="index-l">
+        <a href="#" title="This is the tooltip message." class="easyui-tooltip"
+           data-options="position:'right'">Hoverme</a>
+        <a href="javascript:void(0)" id="mb" class="easyui-menubutton"
+           data-options="menu:'#mm',noline:true,iconCls:'fa fa-tags'">Edit</a>
+        <div id="mm">
+            <div>Undo</div>
+            <div>
+                <span>Open</span>
+                <div style="width:150px;">
+                    <div><b>Word</b></div>
+                    <div>
+                        <span>Open</span>
+                        <div style="width:150px;">
+                            <div><b>Word</b></div>
+                            <div>Excel</div>
+                            <div>PowerPoint</div>
+                        </div>
+                    </div>
+                    <div>PowerPoint</div>
+                </div>
+            </div>
+            <div>Cut</div>
+            <div>Copy</div>
+            <div>Paste</div>
+            <div class="menu-sep"></div>
+            <div>Delete</div>
+            <div>Select All</div>
+        </div>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'fa fa-tags'">我是按钮</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton default">我也是按钮</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton primary" data-options="iconCls:'fa fa-area-chart'"></a>
+        <a href="javascript:void(0)" class="easyui-linkbutton error" data-options="iconCls:'fa fa-gears'"></a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="disabled:true">禁用按钮</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true">简洁按钮</a>
+
+        <h3>开关</h3>
+        <input class="easyui-switchbutton" checked>
+        <input class="easyui-switchbutton" data-options="onText:'开',offText:'关'">
+        <input class="easyui-switchbutton" data-options="disabled:true">
+        <a id="myWin-btn" href="javascript:void(0)" class="easyui-linkbutton primary">对话窗口</a>
+        <div id="myWin" style="display: none;">对话框窗口内容。</div>
+        <a id="myWin-btn2" href="javascript:void(0)" class="easyui-linkbutton info">选择窗口</a>
+        <a id="myWin-btn3" href="javascript:void(0)" class="easyui-linkbutton success">警告窗口</a>
+        <a id="myWin-btn5" href="javascript:void(0)" class="easyui-linkbutton warning">提示窗口</a>
+        <a id="myWin-btn4" href="javascript:void(0)" class="easyui-linkbutton error">显示消息</a>
+    </div>
+    <!--tab-->
+    <div class="index-l">
+        <div id="tt" class="easyui-tabs" data-options="tabHeight:31" style="width:100%;height:100px;">
+            <div title="Tab1" style="padding:20px;display:none;">
+                tab1
+            </div>
+            <div title="Tab2" style="overflow:auto;padding:20px;display:none;">
+                tab2
+            </div>
+            <div title="Tab3" data-options="iconCls:'fa fa-user',closable:true" style="padding:20px;display:none;">
+                tab3
+            </div>
+        </div>
+    </div>
+    <!--accordion和树形-->
+    <div class="index-l">
+        <div id="aa" class="easyui-accordion" style="width:300px;height:200px;">
+            <div title="Title1" data-options="iconCls:'fa fa-save',selected:true">
+                <ul id="tree"></ul>
+            </div>
+            <div title="Title2" data-options="iconCls:'fa fa-tasks'">
+                看我
+            </div>
+            <div title="Title3" data-options="iconCls:'fa fa-star-half-full'">
+                你在害怕什么
+            </div>
+        </div>
+    </div>
+
+    <!--布局-->
+    <div class="index-l">
+        <div id="cc" class="easyui-layout" style="width:100%;height:400px;">
+            <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+            <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
+            <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true"
+                 style="width:100px;"></div>
+            <div data-options="region:'west',title:'West',split:true" style="width:100px;"></div>
+            <div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;"></div>
+        </div>
+    </div>
+
+
+    <!--树形表格-->
+    <div class="index-l">
+        <table id="ttg" style="width:600px;height:400px"></table>
+    </div>
+    <div class="index-l">
+        <table id="pg" style="width:300px"></table>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#myWin-btn").on('click', function () {
+        $('#myWin').window({
+            width: 500,
+            height: 300,
+            modal: true,
+            constrain: true,
+            toolbar: [{
+                text: '编辑',
+                iconCls: 'fa fa-cubes',
+                handler: function () {
+                    alert('edit')
+                }
+            }, {
+                text: '帮助',
+                iconCls: 'fa fa-envelope',
+                handler: function () {
+                    alert('help')
+                }
+            }],
+            buttons: [{
+                text: '保存',
+                handler: function () {
+                }
+            }, {
+                text: '关闭',
+                handler: function () {
+                }
+            }]
+        });
+    });
+
+    $("#myWin-btn2").on('click', function () {
+        $.messager.confirm('确认', '您确认想要删除记录吗？', function (r) {
+            if (r) {
+                alert('确认删除');
+            }
+        });
+    });
+    $("#myWin-btn3").on('click', function () {
+        //error,question,info,warning
+        $.messager.alert('警告', '警告消息', 'warning', function () {
+            $.messager.alert('警告', '警告消息2', 'error');
+        });
+    });
+    $("#myWin-btn5").on('click', function () {
+        $.messager.prompt('提示信息', '请输入姓名：', function (r) {
+            if (r) {
+                alert('你的姓名是：' + r);
+            }
+        });
+    });
+
+    $("#myWin-btn4").on('click', function () {
+        $.messager.show({
+            title: '我的消息',
+            msg: '消息将在3秒后关闭。',
+            timeout: 3000,
+            showType: 'slide'
+        });
+    });
+
+    $('#dg').datagrid({
+        url: 'js/data/datagrid_data.json',
+        fit: true,
+        pagination: true,
+        fitColumns: true,
+        height: 400,
+        columns: [
+            [{
+                field: 'productid',
+                title: 'productid',
+                width: 100,
+                sortable: true
+            }, {
+                field: 'productname',
+                title: 'productname',
+                width: 100,
+                sortable: true
+            }, {
+                field: 'unitcost',
+                title: 'unitcost',
+                width: 100,
+                align: 'right',
+                sortable: true
+            }, {
+                field: 'status',
+                title: 'status',
+                width: 100,
+                align: 'right'
+            }, {
+                field: 'listprice',
+                title: 'listprice',
+                width: 100,
+                align: 'right'
+            }, {
+                field: 'attr1',
+                title: 'attr1',
+                width: 100,
+                align: 'right'
+            }, {
+                field: 'itemid',
+                title: 'itemid',
+                width: 100,
+                align: 'right'
+            }]
+        ]
+    });
+
+    $(function () {
+        /*平滑数据*/
+        var tree_data2 = [
+            {"id": "1", "text": "A"},
+            {"id": "11", "text": "A1", "parentId": "1"},
+            {"id": "12", "text": "A2", "parentId": "1"},
+            {"id": "13", "text": "A3", "parentId": "1"},
+            {"id": "2", "text": "B"},
+            {"id": "3", "text": "C"}
+        ];
+        $('#tree').tree({
+            //data: tree_data2,
+            url: 'js/data/tree_data.json',
+            parentField: 'parentId',
+            checkbox: true,
+            animate: true
+        });
+        /*树形表格*/
+        $('#ttg').treegrid({
+            url: 'js/data/tree_grid_data.json',
+            idField: 'id',
+            treeField: 'name',
+            columns: [[{
+                field: 'name',
+                title: 'name'
+            }, {
+                field: 'size',
+                title: 'size',
+                width: 100
+            }, {
+                field: 'date',
+                title: 'date',
+                width: 100
+            }]]
+        });
+        /*属性表格*/
+        $('#pg').propertygrid({
+            url: 'js/data/pg_data.json',
+            showGroup: true,
+            scrollbarSize: 0
+        });
+    })
+</script>
+</body>
+
+</html>

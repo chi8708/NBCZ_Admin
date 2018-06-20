@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="demo">
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'west'" title="示例目录" style="width:250px;">
+					<div class="demo-list">
+						<ul>
+							<li data-url='easyui/demo/pagination/attaching.html'>attaching.html</li>
+							<li data-url='easyui/demo/pagination/basic.html'>basic.html</li>
+							<li data-url="easyui/demo/pagination/custombuttons.html">custombuttons.html</li>
+							<li data-url='easyui/demo/pagination/layout.html'>layout.html</li>
+							<li data-url='easyui/demo/pagination/links.html'>links.html</li>
+							<li data-url='easyui/demo/pagination/simple.html'>simple.html</li>
+						</ul>
+					</div>
+				</div>
+				<div data-options="region:'center'" title="预览">
+					<div id="et-demo" class="easyui-tabs" data-options="fit:true,border:false,tabHeight:31">
+						<div title="效果">
+							<div id="demoPanel" class="easyui-panel" data-options="fit:true,border:false" style="padding: 15px;"></div>
+						</div>
+						<div title="代码">
+							<div id="demoPanelCode" style="padding:10px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			initDemo();
+		</script>
+	</body>
+
+</html>
