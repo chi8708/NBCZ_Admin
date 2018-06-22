@@ -70,9 +70,9 @@ namespace NBCZ.Web
                "~/easyui-super-theme/js/super.js"
               ));
             bundles.Add(new StyleBundle("~/easyui-super/css").Include(
-              "~/easyui-super-theme/easyui/themes/icons/css/font-awesome.min.css",
               "~/easyui-super-theme/easyui/themes/gray/easyui.css",
-              "~/easyui-super-theme/css/superBlue.css"
+              "~/easyui-super-theme/css/superBlue.css",
+              "~/easyui-super-theme/easyui/themes/icons/css/font-awesome.min.css"
             
              ));
         }

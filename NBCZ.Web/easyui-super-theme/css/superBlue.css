@@ -441,6 +441,7 @@ ul, ol, dl {
 
 .easyui-linkbutton.l-btn {
     padding: 0 8px;
+
 }
 
 .l-btn {
@@ -451,6 +452,7 @@ ul, ol, dl {
     -ms-transition: background-color .3s, opacity .2s;
     -o-transition: background-color .3s, opacity .2s;
     transition: background-color .3s, opacity .2s;
+    filter:initial;/*cts添加*/
 }
 
 .l-btn:hover {
@@ -473,7 +475,7 @@ ul, ol, dl {
 }
 
 .l-btn.primary {
-    background: #39f;
+    background-color: #39f;
     border-color: #39f;
     color: #fff;
 }
@@ -485,7 +487,7 @@ ul, ol, dl {
 }
 
 .l-btn.success {
-    background: #0c6;
+    background-color: #0c6;
     border-color: #0c6;
     color: #fff;
 }
@@ -501,6 +503,7 @@ ul, ol, dl {
     border-color: #f50;
     color: #fff;
 }
+
 
 /*开关*/
 
