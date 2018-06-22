@@ -451,6 +451,7 @@ ul, ol, dl {
     -ms-transition: background-color .3s, opacity .2s;
     -o-transition: background-color .3s, opacity .2s;
     transition: background-color .3s, opacity .2s;
+    filter:initial;/*cts添加*/
 }
 
 .l-btn:hover {
@@ -537,7 +538,7 @@ ul, ol, dl {
     border-radius: 2px;;
 }
 
-.textbox-icon {
+a.textbox-icon {
     color: #000;
     line-height: 30px;
     text-align: center;

@@ -540,7 +540,8 @@ ul, ol, dl {
     border-radius: 2px;;
 }
 
-.textbox-icon {
+/*cts 修改.textbox-icon改为a.textbox-icon*/
+a.textbox-icon {
     color: #000;
     line-height: 30px;
     text-align: center;
