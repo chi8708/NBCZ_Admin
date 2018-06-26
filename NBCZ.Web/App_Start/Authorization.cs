@@ -13,7 +13,7 @@ namespace NBCZ.Web
     /// 权限验证
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
-    public class AuthorizationAttribute : Attribute
+    public class AuthorizationAttribute :ActionFilterAttribute
     {
         public AuthorizationAttribute(string[] functionCodes, string[] mainCode) 
         {
@@ -36,7 +36,53 @@ namespace NBCZ.Web
         /// </summary>
         public string[] MainCode { get; set; }
 
+        /// <summary>
+        /// 权限验证拦截
+        /// </summary>
+        /// <param name="filterContext"></param>
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            CheckAuth(filterContext);
+            base.OnActionExecuting(filterContext);
+        }
+
+
+        /// <summary>
+        /// 权限验证
+        /// </summary>
+        /// <param name="filterContext"></param>
+        private void CheckAuth(ActionExecutingContext filterContext)
+        {
+            if (filterContext.HttpContext.Request.HttpMethod.ToUpper() == "GET")
+            {
+             
+                //获取该特性信息  
+                var attr = GetAuthAttribute<AuthorizationAttribute>(filterContext);
+                if (attr == null)
+                {
+                    base.OnActionExecuting(filterContext);
+                    return;
+                }
+                AuthorizationService.Instance.CheckAuthorization(filterContext, attr.FunctionCodes, attr.MainCode);
+            }
+
+
+        }
+
+        public T GetAuthAttribute<T>(ActionExecutingContext filterContext)
+        {
+            var obj= filterContext.ActionDescriptor.GetCustomAttributes(typeof(T), false);
+            if (obj == null || obj.Length <= 0)
+            {
+                return default(T);
+            }
+            return (T)obj[0];
+        }
+
     }
+
+
+
 
 
     public class AuthorizationService

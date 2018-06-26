@@ -17,11 +17,10 @@ namespace NBCZ.Web.Areas.Admin.Controllers
         /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            CheckAuth(filterContext);
+            //CheckAuth(filterContext);
 
             base.OnActionExecuting(filterContext);
         }
-
         /// <summary>
         /// 权限验证
         /// </summary>
