@@ -25,11 +25,13 @@ foreach(DbTable dbTable in dtList)
 
 using System;
 using DapperExtensions.Mapper;
+using Newtonsoft.Json;
 namespace <#=Config.Namespace#>.Model
 {	
     <#
       if(primaryKey.CSharpType=="int"||primaryKey.CSharpType=="long")
      {#>
+   
     public partial class <#=tableName#>
     {
      <#}
@@ -47,7 +49,8 @@ namespace <#=Config.Namespace#>.Model
 		<# foreach(DbColumn column in dbColList)  {#>
 		/// <summary>
 		/// <#=column.Remark#>
-		/// </summary>		
+		/// </summary>
+        [JsonProperty]	
 		public <#= column.IsNullCSharpType#> <#=column.ColumnName#> { get; set; }
 		<#}#>   
     }

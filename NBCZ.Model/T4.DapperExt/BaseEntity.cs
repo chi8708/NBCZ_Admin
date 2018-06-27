@@ -1,10 +1,13 @@
 ﻿using System;
 using DapperExtensions.Mapper;
+using Newtonsoft.Json;
 
 namespace NBCZ.Model
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class BaseEntity<T>:ClassMapper<T> where T:class
     {
+       
         public BaseEntity()
         {
             var type = typeof(T);
