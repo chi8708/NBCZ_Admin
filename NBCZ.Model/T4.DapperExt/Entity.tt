@@ -19,7 +19,7 @@ foreach(DbTable dbTable in dtList)
 //	   生成时间 <#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#>
 //     对此文件的更改可能会导致不正确的行为，并且如果
 //     重新生成代码，这些更改将会丢失
-//     作者：Harbour
+//     作者：Harbour CTS
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -31,12 +31,13 @@ namespace <#=Config.Namespace#>.Model
     <#
       if(primaryKey.CSharpType=="int"||primaryKey.CSharpType=="long")
      {#>
-   
+[JsonObject(MemberSerialization.OptIn)]
     public partial class <#=tableName#>
     {
      <#}
      else
     {#>
+[JsonObject(MemberSerialization.OptIn)]
     public partial class <#=tableName#>:BaseEntity<<#=tableName#>>
     {
         public <#=tableName#>()
@@ -46,12 +47,13 @@ namespace <#=Config.Namespace#>.Model
           AutoMap();
         }
     <#}#>
-		<# foreach(DbColumn column in dbColList)  {#>
-		/// <summary>
-		/// <#=column.Remark#>
-		/// </summary>
+		<# foreach(DbColumn column in dbColList){#>
+ /// <summary>
+     	/// <#=column.Remark#>
+     	/// </summary>
         [JsonProperty]	
 		public <#= column.IsNullCSharpType#> <#=column.ColumnName#> { get; set; }
+
 		<#}#>   
     }
 }

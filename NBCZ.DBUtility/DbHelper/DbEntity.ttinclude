@@ -16,7 +16,7 @@
         //命名空间
         public static readonly string Namespace = "NBCZ";
 		//需要生成的表名，多张表用,分割
-        public static readonly string Tables = "Pub_UserFunction";//"users,rows,titles"
+        public static readonly string Tables = "";//"users,rows,titles"
     }
     public class DbFactory
     {

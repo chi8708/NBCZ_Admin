@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 
 namespace NBCZ.Model
 {
-    [JsonObject(MemberSerialization.OptIn)]
     public class BaseEntity<T>:ClassMapper<T> where T:class
     {
        
