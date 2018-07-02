@@ -542,7 +542,12 @@ layui.define(['layer',"fsCommon","form",'laydate',"fsConfig",'layedit'], functio
             url = "/fsbus/" + funcNo;
         }
         fsCommon.noUrl = null;
-    }
+	}
+	else {
+	    if (noUrl == "2") {//传入2将会返回不提交form
+	        return;
+	    }
+	}
 
 
   	//处理layedit编辑器内容
