@@ -12,11 +12,11 @@ foreach(DbTable dbTable in dtList)
 {   
         var preParameter=dbHelper.PreParameter;
 	string tableName=dbTable.TableName;
-	var dbColList=dbHelper.GetDbColumns(tableName);
+	var dbColList=dbHelper.GetDbColumns(tableName,"dbo");
 	var parList=dbColList.Where(e=>!e.IsIdentity).ToList();
 	//var isParList=dbColList.Where(e=>e.IsIdentity).ToList();
     var isParList=dbColList.Where(e=>e.IsPrimaryKey).ToList();
-    var primaryKey=dbHelper.GetDbColumns(tableName).First(p=>p.IsPrimaryKey);
+    var primaryKey=dbColList.FirstOrDefault(p=>p.IsPrimaryKey);
 
 	manager.StartNewFile(tableName+"BLL.cs");#>
 //------------------------------------------------------------------------------
@@ -41,6 +41,7 @@ namespace <#=Config.Namespace#>.BLL
 {	
 	public partial class <#=tableName#>BLL:BaseService<Model.<#=tableName#>>
     {
+       <#if(primaryKey!=null){#>
         /// 删除一条数据
         /// </summary>
         public bool DeleteByPrimaryKey(<#=primaryKey.CSharpType#>  <#=primaryKey.ColumnName#>)
@@ -52,6 +53,7 @@ namespace <#=Config.Namespace#>.BLL
 			   };<#}}#>   
             return base.DeleteByWhere("<#=primaryKey.ColumnName#>=@<#=primaryKey.ColumnName#>", newClass);
         }
+     <#}#>
 
     }
 }

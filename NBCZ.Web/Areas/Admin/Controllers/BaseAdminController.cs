@@ -18,7 +18,6 @@ namespace NBCZ.Web.Areas.Admin.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             //CheckAuth(filterContext);
-
             base.OnActionExecuting(filterContext);
         }
         /// <summary>

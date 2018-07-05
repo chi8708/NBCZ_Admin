@@ -78,6 +78,9 @@
     <Compile Include="T4.DapperExt\Pub_UserRole.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
+    <Compile Include="T4.DapperExt\V_PubUser_Dept.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
     <Compile Include="V_PubUser_Dept.cs" />
   </ItemGroup>
   <ItemGroup>

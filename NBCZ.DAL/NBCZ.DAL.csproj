@@ -76,6 +76,9 @@
     <Compile Include="T4.DapperExt\Pub_UserRoleDAL.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
+    <Compile Include="T4.DapperExt\V_PubUser_DeptDAL.cs">
+      <DependentUpon>DataAccess.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NBCZ.Common\NBCZ.Common.csproj">

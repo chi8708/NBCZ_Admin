@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Text;
 using NBCZ.Model;
 using System.Data;
+using T4;
 
 namespace NBCZ.DAL
 {
@@ -208,7 +209,7 @@ namespace NBCZ.DAL
                 t = cn.Get<T>(id);
                 cn.Close();
             }
-
+            var primaryKey = new MsSqlDbHelper().GetDbTables();
             return t;
 
         }

@@ -22,7 +22,7 @@ namespace T4
         //命名空间
         public static readonly string Namespace = "DapperTest";
         //需要生成的表名，多张表用,分割
-        public static readonly string Tables = null;//"users,rows,titles"
+        public static readonly string Tables = "Table1";//"users,rows,titles"
     }
     public class DbFactory
     {

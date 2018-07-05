@@ -29,6 +29,11 @@ namespace T4
             {
                 tables = string.Format(" and obj.name in ('{0}')", tables.Replace(",", "','"));
             }
+            string views = Config.Tables;
+            if (!string.IsNullOrEmpty(tables))
+            {
+                views = string.Format(" and v.[name] in ('{0}')", views.Replace(",", "','"));
+            }
             #region SQL
             string sql = string.Format(@"SELECT
 									obj.name tablename,
@@ -44,8 +49,12 @@ namespace T4
 									from {0}.sys.objects obj 
 									inner join {0}.dbo.sysindexes idx on obj.object_id=idx.id and idx.indid<=1
 									INNER JOIN {0}.sys.schemas schem ON obj.schema_id=schem.schema_id
-									where type='U' {1}
-									order by obj.name", Config.DbDatabase, tables);
+									where type='U' {1} ", Config.DbDatabase, tables);
+
+            //cts 添加
+            sql += string.Format(@" UNION ALL								
+                select v.[name] as tablename, s.[name] as schemname, 0 rows,'0' HasPrimaryKey from sys.views as v,sys.schemas as s where v.schema_id = s.schema_id
+                and s.[name] = 'dbo' {0}", views);
             #endregion
             DataTable dt = GetDataTable(sql);
             return dt.Rows.Cast<DataRow>().Select(row => new DbTable

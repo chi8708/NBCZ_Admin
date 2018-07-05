@@ -16,7 +16,7 @@
         //命名空间
         public static readonly string Namespace = "NBCZ";
 		//需要生成的表名，多张表用,分割
-        public static readonly string Tables = "";//"users,rows,titles"
+        public static readonly string Tables = "Pub_User";//"users,rows,titles"
     }
     public class DbFactory
     {
@@ -34,7 +34,7 @@
     {
         public abstract string PreParameter { get; set; }
         public abstract List<DbTable> GetDbTables();
-        public abstract List<DbColumn> GetDbColumns(string tableName, string schema=null);
+        public abstract List<DbColumn> GetDbColumns(string tableName, string schema);
         public abstract DataTable GetDataTable(string commandText, params IDataParameter[] parms);
         public abstract string GetParStr(List<DbColumn> dbComList);
 
