@@ -32,13 +32,13 @@ namespace <#=Config.Namespace#>.Model
       if(primaryKey==null||primaryKey.CSharpType=="int"||primaryKey.CSharpType=="long")
      {#>
 [JsonObject(MemberSerialization.OptIn)]
-    public partial class <#=tableName#>
+    public sealed partial class <#=tableName#>
     {
      <#}
      else
     {#>
 [JsonObject(MemberSerialization.OptIn)]
-    public partial class <#=tableName#>:BaseEntity<<#=tableName#>>
+    public sealed partial class <#=tableName#>:BaseEntity<<#=tableName#>>
     {
         public <#=tableName#>()
         {
