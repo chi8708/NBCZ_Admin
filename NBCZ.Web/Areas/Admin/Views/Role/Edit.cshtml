@@ -32,7 +32,7 @@
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     @*topredirecturl="@Url.ActionAdmin("Index", new { selectNode = ViewBag.parentCode })"*@
-                    <button class="layui-btn" lay-submit="" method="post" url="@Url.ActionAdmin("Edit")">编辑</button>
+                    <button class="layui-btn" lay-submit="" isconfirm="1" confirmmsg="确认修改？" method="post" url="@Url.ActionAdmin("Edit")">编辑</button>
                     <button type="button" class="layui-btn layui-btn-primary" function="close">关闭</button>
                 </div>
             </div>

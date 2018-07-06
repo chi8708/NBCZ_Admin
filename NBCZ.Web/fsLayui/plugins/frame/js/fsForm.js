@@ -549,38 +549,52 @@ layui.define(['layer',"fsCommon","form",'laydate',"fsConfig",'layedit'], functio
 	    }
 	}
 
+	 //cts 添加;
+	if ("1" == _this.attr("isConfirm")) {
+	    var confirmMsg = _this.attr("confirmMsg");
+	    if ($.isEmpty(confirmMsg)) {
+	        confirmMsg = "是否确定操作选中的数据?";
+	    }
 
-  	//处理layedit编辑器内容
-  	$.each(layEdits, function(key, val) {
-  		param[key] = layedit.getContent(val);
-  	});
+	    fsCommon.confirm("提示", confirmMsg, function (index) {
+	        top.layer.close(index);
+	        confirmSubmit();
+	    });
+	}
+	else {
+	    confirmSubmit();
+	}
+
+    function confirmSubmit() {
+	    //处理layedit编辑器内容
+	    $.each(layEdits, function (key, val) {
+	        param[key] = layedit.getContent(val);
+	    });
 
 
-  	fsCommon.invoke(url,param,function(data)
-  	{
-  	   
-    	if(data[statusName] == successNo)
-    	{
-    	    fsCommon.successMsg('操作成功!');
-    	    if (!FsForm.prototype.isRefreshTable) {
-    	        fsCommon.setRefreshTable("1");
-    	        FsForm.prototype.isRefreshTable = null;
-    	    }
-    		//是否自动关闭，默认是
-    		if(_this.attr("isClose") != "0"){
-    			parent.layer.close(parent.layer.getFrameIndex(window.name));
-    		}
-    	}
-    	else
-    	{
-    		//提示错误消息
-    		fsCommon.errorMsg(data[msgName]);
-    	}
-    	//if (fsCommon.callJs) {
-    	//    fn = eval(fsCommon.callJs);//执行回调方法
-    	//    fn.call(this, data);
-    	//}
-		},false);
+	    fsCommon.invoke(url, param, function (data) {
+
+	        if (data[statusName] == successNo) {
+	            fsCommon.successMsg('操作成功!');
+	            if (!FsForm.prototype.isRefreshTable) {
+	                fsCommon.setRefreshTable("1");
+	                FsForm.prototype.isRefreshTable = null;
+	            }
+	            //是否自动关闭，默认是
+	            if (_this.attr("isClose") != "0") {
+	                parent.layer.close(parent.layer.getFrameIndex(window.name));
+	            }
+	        }
+	        else {
+	            //提示错误消息
+	            fsCommon.errorMsg(data[msgName]);
+	        }
+	        //if (fsCommon.callJs) {
+	        //    fn = eval(fsCommon.callJs);//执行回调方法
+	        //    fn.call(this, data);
+	        //}
+	    }, false);
+	}
   };
 
   var fsForm = new FsForm();
