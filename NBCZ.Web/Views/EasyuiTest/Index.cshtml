@@ -18,7 +18,7 @@
             color:#000;
         }
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 5px;
             height: 4px;
             background-color: #F5F5F5;
         }
@@ -38,7 +38,12 @@
                 border-radius: 3px;
                 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
                 background-color: rgba(7, 170, 247, 1);
-            }  
+            }
+
+        /*导航右边图标样式*/
+        #nav-fun .accordion-expand, #nav-fun .accordion-collapse {
+            background: none;
+        }
     </style>
     <script type="text/javascript">
         function addTab(title, url) {
@@ -184,8 +189,14 @@
                 addTab(title, href);
             });
 
+            //左导航选中样式
+            $('#nav-fun').accordion({'onSelect':function () {
+                $(".accordion-header-selected").closest(".panel").css({ "border-bottom": " 1px solid #2980B9" })
+                .siblings().css({"border":"0"});
+            }});
 
         });
+
 
 
    
@@ -234,20 +245,20 @@
     </div>
     <div id="easyui-layout-west" data-options="region:'west',title:'MAIN NAVIGATION',border:false">
         <!--左侧导航-->
-        <div class="easyui-accordion" data-options="border:false,fit:true,selected:true">
+        <div class="easyui-accordion" data-options="border:false,fit:false,selected:true" id="nav-fun">
             <div title="基础" data-options="iconCls:'fa fa-navicon'">
-             
+
                 <ul>
                     <li><a href="javascript:void(0);" src="../EasyuiTest/Demo" class="cs-navi-tab">easyloader</a></li>
                     <li><a href="javascript:void(0);" src="ddd" class="cs-navi-tab">SearchBox（搜索框</a></li>
-                    <li data-url="example/progressBar.html" >ProgressBar（进度条)</li>
+                    <li data-url="example/progressBar.html">ProgressBar（进度条)</li>
                     <li data-url='example/toolTip.html'>Tooltip（提示框）</li>
                 </ul>
             </div>
             <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,fit:true,selected:true">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
                     <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,fit:true,selected:true">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
                             <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
                                 <h3 style="color:#0099FF;">我是分类</h3>
                             </div>
@@ -281,6 +292,236 @@
             </div>
             <div title="扩展" data-options="iconCls:'fa fa-sitemap'">
                 content3
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
+                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
+                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
+                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                <h3 style="color:#0099FF;">我是分类</h3>
+                            </div>
+                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                content2
+                            </div>
+                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                content3
+                            </div>
+                        </div>
+                    </div>
+                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                        content2
+                    </div>
+                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                        content3
+                    </div>
+                </div>
             </div>
         </div>
     </div>
