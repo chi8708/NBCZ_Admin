@@ -18,7 +18,7 @@
             color:#000;
         }
         ::-webkit-scrollbar {
-            width: 5px;
+            width: 3px;
             height: 4px;
             background-color: #F5F5F5;
         }
@@ -42,7 +42,10 @@
 
         /*导航右边图标样式*/
         #nav-fun .accordion-expand, #nav-fun .accordion-collapse {
-            background: none;
+            background:none;
+        }
+        .selected-nav {
+            border-bottom: 1px solid #2980B9;
         }
     </style>
     <script type="text/javascript">
@@ -191,8 +194,10 @@
 
             //左导航选中样式
             $('#nav-fun').accordion({'onSelect':function () {
-                $(".accordion-header-selected").closest(".panel").css({ "border-bottom": " 1px solid #2980B9" })
-                .siblings().css({"border":"0"});
+                $("#nav-fun > .panel").removeClass('selected-nav');
+                var p = $(this).accordion('getSelected');
+                $(p).closest('.panel').addClass('selected-nav');
+
             }});
 
         });
@@ -206,7 +211,9 @@
     <div data-options="region:'north',border:false" class="super-north" style="height: 50px;">
         <!--顶部-->
         <div class="super-navigation">
-            <div class="super-navigation-title">SUPER THEME</div>
+            <div class="super-navigation-title">
+                SUPER THEME
+            </div>
             <div class="super-navigation-main">
                 <div class="super-setting-left">
                     <ul>
@@ -249,18 +256,32 @@
             <div title="基础" data-options="iconCls:'fa fa-navicon'">
 
                 <ul>
-                    <li><a href="javascript:void(0);" src="../EasyuiTest/Demo" class="cs-navi-tab">easyloader</a></li>
+                    <li>
+                        <a href="javascript:void(0);" src="../EasyuiTest/Demo" class="cs-navi-tab">easyloader</a>
+                    </li>
                     <li><a href="javascript:void(0);" src="ddd" class="cs-navi-tab">SearchBox（搜索框</a></li>
                     <li data-url="example/progressBar.html">ProgressBar（进度条)</li>
                     <li data-url='example/toolTip.html'>Tooltip（提示框）</li>
                 </ul>
             </div>
             <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                <ul>
+                    <li style="height:auto;padding-left:0px;">
+                        <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
                             <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
+                                <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
+                                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
+                                        <h3 style="color:#0099FF;">我是分类</h3>
+                                    </div>
+                                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
+                                        <ul>
+                                            <li><a href="javascript:void(0);" src="../EasyuiTest/Demo" class="cs-navi-tab">easyloader</a></li>
+                                        </ul>
+                                    </div>
+                                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
+                                        content3
+                                    </div>
+                                </div>
                             </div>
                             <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
                                 content2
@@ -269,14 +290,9 @@
                                 content3
                             </div>
                         </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
+                    </li>
+                </ul>
+
             </div>
             <div title="菜单和按钮" data-options="iconCls:'fa fa-gavel'">
                 content3
