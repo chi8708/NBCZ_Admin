@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -9,14 +8,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    @Scripts.Render("~/easyui-super/js")
+
     @Styles.Render("~/easyui-super/css")
     <style type="text/css">
         .cs-navi-tab {
-            display:block;
+            display: block;
             /*width:90%;*/
-            color:#000;
+            color: #000;
         }
+
         ::-webkit-scrollbar {
             width: 3px;
             height: 4px;
@@ -42,12 +42,124 @@
 
         /*导航右边图标样式*/
         #nav-fun .accordion-expand, #nav-fun .accordion-collapse {
-            background:none;
+            background: none;
         }
+
         .selected-nav {
             border-bottom: 1px solid #2980B9;
         }
     </style>
+
+</head>
+<body id="main" class="easyui-layout">
+    <div data-options="region:'north',border:false" class="super-north" style="height: 50px;">
+        <!--顶部-->
+        <div class="super-navigation">
+            <div class="super-navigation-title">
+                SUPER THEME
+            </div>
+            <div class="super-navigation-main">
+                <div class="super-setting-left">
+                    <ul>
+                        <li><i class="fa fa-commenting-o"></i></li>
+                        <li><i class="fa fa-envelope-o"></i></li>
+                        <li><i class="fa fa-bell-o"></i></li>
+                        <!--<div id="mm2" class="easyui-menu">
+                            <div>有情况</div>
+                            <div>你瞅啥</div>
+                            <div class="menu-sep"></div>
+                            <div>瞅你咋滴</div>
+                        </div>-->
+                    </ul>
+                </div>
+                <div class="super-setting-right">
+                    <ul>
+                        <li class="user">
+                            <span class="user-icon"><img src="../easyui-super-theme/img/favicon.png" /></span>
+                            <span>管理员</span>
+                        </li>
+                        <li>
+                            <div class="super-setting-icon">
+                                <i class="fa fa-gears"></i>
+                            </div>
+                            <div id="mm2" class="easyui-menu">
+                                <div>个人中心</div>
+                                @*<div id="themeSetting">主题</div>*@
+                                <div class="menu-sep"></div>
+                                <div id="logout">退出</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="easyui-layout-west" data-options="region:'west',title:'<input type=text  onchange=searchMenu(this) style=width:90%;height:20px;>',border:false">
+        <!--左侧导航-->
+        <div class="easyui-accordion" data-options="border:false,fit:false,selected:true" id="nav-fun">
+            @Html.Raw(ViewBag.NavHtml)
+        </div>
+        <div id="nav-fun-search" style="display:none;" data-options="border:false,fit:false,selected:true">
+        </div>
+    </div>
+
+    <div data-options="region:'center'" style="padding-top: 2px;">
+        <!--主要内容-->
+        <div id="tabs" class="easyui-tabs" data-options="border:false,fit:true">
+            <div title="首页" data-options="iconCls:'fa fa-home'">
+                <iframe src="Demo" width="100%" height="99%" frameborder="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'south'" class="super-south">
+        <!--页脚-->
+        <div class="super-footer-info">
+            <span><i class="fa fa-info-circle"></i> 作者：Gemmy</span>
+            <span><i class="fa fa-copyright"></i> CopyRight 2016 版权所有 <i class="fa fa-caret-right"></i></span>
+        </div>
+    </div>
+
+    <!--主题设置弹窗-->
+    <div id="win">
+        <div class="themeItem">
+            <ul>
+                <li>
+                    <div class="TURQUOISE">TURQUOISE</div>
+                </li>
+                <li>
+                    <div class="EMERALD">EMERALD</div>
+                </li>
+                <li>
+                    <div class="PETER-RIVER">PETER RIVER</div>
+                </li>
+                <li>
+                    <div class="AMETHYST">AMETHYST</div>
+                </li>
+                <li>
+                    <div class="WET-ASPHALT">WET ASPHALT</div>
+                </li>
+                <li>
+                    <div class="SUN-FLOWER">SUN FLOWER</div>
+                </li>
+                <li>
+                    <div class="CARROT">CARROT</div>
+                </li>
+                <li class="themeActive">
+                    <div class="ALIZARIN">ALIZARIN</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="mm" class="easyui-menu cs-tab-menu">
+        <div id="mm-tabupdate">刷新</div>
+        <div class="menu-sep"></div>
+        <div id="mm-tabclose">关闭</div>
+        <div id="mm-tabcloseother">关闭其他</div>
+        <div id="mm-tabcloseall">关闭全部</div>
+    </div>
+
+    @Scripts.Render("~/easyui-super/js")
     <script type="text/javascript">
         function addTab(title, url) {
             if ($('#tabs').tabs('exists', title)) {
@@ -183,7 +295,7 @@
         }
 
         $(function () {
-        
+
             tabCloseEven();
             $('.cs-navi-tab').click(function () {
                 var $this = $(this);
@@ -193,408 +305,66 @@
             });
 
             //左导航选中样式
-            $('#nav-fun').accordion({'onSelect':function () {
-                $("#nav-fun > .panel").removeClass('selected-nav');
-                var p = $(this).accordion('getSelected');
-                $(p).closest('.panel').addClass('selected-nav');
+            $('#nav-fun').accordion({
+                'onSelect': function () {
+                    $("#nav-fun > .panel").removeClass('selected-nav');
+                    var p = $(this).accordion('getSelected');
+                    $(p).closest('.panel').addClass('selected-nav');
 
-            }});
+                }
+            });
 
         });
 
 
+        //菜单搜索
+        function searchMenu(src) {
+            var txt = $.trim($(src).val());
+            var navSearch = $("#nav-fun-search");
+            var navFun = $("#nav-fun");
 
-   
+            if (!txt) {
+                navFun.show();
+                navSearch.hide();
+            }
+            else {
+                var html = '';
+                //标题包含
+                var panelArr = [];//已添加的panel集合
+                var div = navFun.find("div.panel-title");
+                var a = navFun.find("a.fun-search");
+                for (var i = 0; i < a.length; i++) {
+                    div.push(a[i]);
+                }
+                for (var i = 0; i < div.length; i++) {
+                    var divi = $(div[i]);
+                    if (divi.text().indexOf(txt) > -1) {
+                        var panel = divi.closest(".panel").html();
+                        if (panelArr.indexOf(panel) > -1) {
+                            continue;
+                        }
+                        panelArr.push(panel);
+                        html += '<div class="panel panel-htop" style="width: 247px;">';
+                        html += panel;
+                        html += '</div>'
+                    }
+                }
+
+                var re = new RegExp(txt, "g");
+                navSearch.html(html.replace(re, '<span style="color:red">' + txt + '</span>'));
+                navFun.hide();
+                navSearch.show();
+
+                //panel-header 事件绑定及样式调整
+                navSearch.find(".panel-header").on('click', function () {
+                    $(this).siblings().toggle();
+                }).removeAttr("style").siblings().removeAttr("style");
+            }
+
+        }
+
     </script>
-</head>
-<body id="main" class="easyui-layout">
-    <div data-options="region:'north',border:false" class="super-north" style="height: 50px;">
-        <!--顶部-->
-        <div class="super-navigation">
-            <div class="super-navigation-title">
-                SUPER THEME
-            </div>
-            <div class="super-navigation-main">
-                <div class="super-setting-left">
-                    <ul>
-                        <li><i class="fa fa-commenting-o"></i></li>
-                        <li><i class="fa fa-envelope-o"></i></li>
-                        <li><i class="fa fa-bell-o"></i></li>
-                        <!--<div id="mm2" class="easyui-menu">
-                            <div>有情况</div>
-                            <div>你瞅啥</div>
-                            <div class="menu-sep"></div>
-                            <div>瞅你咋滴</div>
-                        </div>-->
-                    </ul>
-                </div>
-                <div class="super-setting-right">
-                    <ul>
-                        <li class="user">
-                            <span class="user-icon"><img src="../easyui-super-theme/img/favicon.png" /></span>
-                            <span>管理员</span>
-                        </li>
-                        <li>
-                            <div class="super-setting-icon">
-                                <i class="fa fa-gears"></i>
-                            </div>
-                            <div id="mm2" class="easyui-menu">
-                                <div>个人中心</div>
-                                @*<div id="themeSetting">主题</div>*@
-                                <div class="menu-sep"></div>
-                                <div id="logout">退出</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="easyui-layout-west" data-options="region:'west',title:'MAIN NAVIGATION',border:false">
-        <!--左侧导航-->
-        <div class="easyui-accordion" data-options="border:false,fit:false,selected:true" id="nav-fun">
-            <div title="基础" data-options="iconCls:'fa fa-navicon'">
 
-                <ul>
-                    <li>
-                        <a href="javascript:void(0);" src="../EasyuiTest/Demo" class="cs-navi-tab">easyloader</a>
-                    </li>
-                    <li><a href="javascript:void(0);" src="ddd" class="cs-navi-tab">SearchBox（搜索框</a></li>
-                    <li data-url="example/progressBar.html">ProgressBar（进度条)</li>
-                    <li data-url='example/toolTip.html'>Tooltip（提示框）</li>
-                </ul>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <ul>
-                    <li style="height:auto;padding-left:0px;">
-                        <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                        <h3 style="color:#0099FF;">我是分类</h3>
-                                    </div>
-                                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                        <ul>
-                                            <li><a href="javascript:void(0);" src="../EasyuiTest/Demo" class="cs-navi-tab">easyloader</a></li>
-                                        </ul>
-                                    </div>
-                                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                        content3
-                                    </div>
-                                </div>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </li>
-                </ul>
 
-            </div>
-            <div title="菜单和按钮" data-options="iconCls:'fa fa-gavel'">
-                content3
-            </div>
-            <div title="表单" data-options="iconCls:'fa fa-wpforms'">
-                content3
-            </div>
-            <div title="窗口" data-options="iconCls:'fa fa-window-maximize'">
-                content3
-            </div>
-            <div title="表格和树" data-options="iconCls:'fa fa-table'">
-                content3
-            </div>
-            <div title="扩展" data-options="iconCls:'fa fa-sitemap'">
-                content3
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-            <div title="布局" data-options="iconCls:'fa fa-desktop'" style="padding-left: 10px;">
-                <div id="aaa" class="easyui-accordion" data-options="border:false,selected:true">
-                    <div title="Title1" data-options="iconCls:'fa fa-sitemap'" style="padding-left: 10px;">
-                        <div id="aaa2" class="easyui-accordion" data-options="border:false,selected:true">
-                            <div title="Title1" data-options="iconCls:'fa fa-sitemap'">
-                                <h3 style="color:#0099FF;">我是分类</h3>
-                            </div>
-                            <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                                content2
-                            </div>
-                            <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                                content3
-                            </div>
-                        </div>
-                    </div>
-                    <div title="Title2" data-options="iconCls:'fa fa-sitemap'">
-                        content2
-                    </div>
-                    <div title="Title3" data-options="iconCls:'fa fa-sitemap'">
-                        content3
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div data-options="region:'center'" style="padding-top: 2px;">
-        <!--主要内容-->
-        <div id="tabs" class="easyui-tabs" data-options="border:false,fit:true">
-            <div title="首页" data-options="iconCls:'fa fa-home'">
-                <iframe src="Demo" width="100%" height="99%" frameborder="no"></iframe>
-            </div>
-        </div>
-    </div>
-    <div data-options="region:'south'" class="super-south">
-        <!--页脚-->
-        <div class="super-footer-info">
-            <span><i class="fa fa-info-circle"></i> 作者：××&nbsp;&nbsp;××</span>
-            <span><i class="fa fa-copyright"></i> CopyRight 2016 版权所有 <i class="fa fa-caret-right"></i></span>
-        </div>
-    </div>
-
-    <!--主题设置弹窗-->
-    <div id="win">
-        <div class="themeItem">
-            <ul>
-                <li>
-                    <div class="TURQUOISE">TURQUOISE</div>
-                </li>
-                <li>
-                    <div class="EMERALD">EMERALD</div>
-                </li>
-                <li>
-                    <div class="PETER-RIVER">PETER RIVER</div>
-                </li>
-                <li>
-                    <div class="AMETHYST">AMETHYST</div>
-                </li>
-                <li>
-                    <div class="WET-ASPHALT">WET ASPHALT</div>
-                </li>
-                <li>
-                    <div class="SUN-FLOWER">SUN FLOWER</div>
-                </li>
-                <li>
-                    <div class="CARROT">CARROT</div>
-                </li>
-                <li class="themeActive">
-                    <div class="ALIZARIN">ALIZARIN</div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="mm" class="easyui-menu cs-tab-menu">
-        <div id="mm-tabupdate">刷新</div>
-        <div class="menu-sep"></div>
-        <div id="mm-tabclose">关闭</div>
-        <div id="mm-tabcloseother">关闭其他</div>
-        <div id="mm-tabcloseall">关闭全部</div>
-    </div>
 </body>
 </html>
