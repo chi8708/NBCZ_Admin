@@ -137,7 +137,16 @@ namespace NBCZ.Web
                 return dic;
             }
 
-            dic = functionBLL.CheckUserAuth(userCode, functionCodes);
+           // dic = functionBLL.CheckUserAuth(userCode, functionCodes);
+
+            dic = new Dictionary<string, bool>();
+            var userFunctions = NBCZUser.UserFunctions;
+            foreach (var code in functionCodes)
+            {
+                var isHaveCode = userFunctions.Exists(p =>p.FunctionCode==code);
+                dic.Add(code, isHaveCode);
+            }
+
             if (dic != null)
             {
                 if (mainCode == null || mainCode.Length <= 0)

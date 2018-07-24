@@ -36,11 +36,12 @@ namespace NBCZ.Web.Areas.Admin.Controllers
             //IList<ISort> sort = new List<ISort>();
             //sort.Add(new Sort() { PropertyName = "StopFlag",Ascending=true });
 
-            string functionSql = string.Format(@"select functioncode from dbo.Pub_UserFunction WHERE UserCode='{0}'
-                                                UNION SELECT functioncode FROM dbo.Pub_RoleFunction
-                                                WHERE RoleCode=(SELECT RoleCode FROM Pub_UserRole AS pur WHERE UserCode='{0}')",NBCZUser.UserCode);
+//            string functionSql = string.Format(@"select functioncode from dbo.Pub_UserFunction WHERE UserCode='{0}'
+//                                                UNION SELECT functioncode FROM dbo.Pub_RoleFunction
+//                                                WHERE RoleCode=(SELECT RoleCode FROM Pub_UserRole AS pur WHERE UserCode='{0}')",NBCZUser.UserCode);
 
-            function = _pub_functionbll.GetList("StopFlag=0 AND MenuFlag=1 AND FunctionCode In ("+functionSql +")");
+//            function = _pub_functionbll.GetList("StopFlag=0 AND MenuFlag=1 AND FunctionCode In ("+functionSql +")");
+             function = NBCZUser.UserFunctions.Where(p => p.MenuFlag).ToList();
             List<Model.frMenuJson> menu = new List<Model.frMenuJson>();
             foreach (var sub in function)
             {
