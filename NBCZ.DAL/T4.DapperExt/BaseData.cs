@@ -209,7 +209,7 @@ namespace NBCZ.DAL
                 t = cn.Get<T>(id);
                 cn.Close();
             }
-            var primaryKey = new MsSqlDbHelper().GetDbTables();
+           // var primaryKey = new MsSqlDbHelper().GetDbTables();
             return t;
 
         }

@@ -92,7 +92,7 @@ namespace NBCZ
                      WriteUser(context.User.Identity.Name);
                 }
             }
-            admin= context.Session["Admin"] as LoginAdmin??new LoginAdmin();         
+            admin = context.Session["Admin"] as LoginAdmin ?? (new LoginAdmin() {UserFunctions=new List<Pub_Function>() });         
 
             return admin;
         }
