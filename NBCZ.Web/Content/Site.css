@@ -1,19 +1,6 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+﻿
+* {
+    font-size:12px;
 }
 
 /* styles for validation helpers */
@@ -40,3 +27,79 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+
+.input-validation-error {
+    border: 1px solid red !important;
+}
+
+.field-validation-error {
+    color: red;
+    font-size: 1rem;
+    position: absolute;
+    right: 1.5rem;
+    margin-top: -2.2rem;
+}
+
+.errorInfo {
+    color: red;
+    font-size: 1rem;
+    text-align:center;
+}
+
+
+
+/*-----搜索更多---------*/
+.search-More {
+     padding:5px;
+     border: 1px solid #bbb; 
+     display: none;
+     z-index: 999; 
+     width: 99%;
+     /*height: 200px;*/ 
+     position: absolute; 
+     background-color:#ffffff;
+     left:0px;
+     right:0px;
+     min-height:100px;
+}
+
+ .search-More .footer {
+     margin-top:5px;
+     text-align:center;
+     border-top:1px solid #bbb; 
+     padding:5px;
+     width:100%;
+     margin-left:-5px;
+     position:absolute;
+     bottom:2px;
+  }
+
+.btn-search-click {
+    height:37px !important;
+    border-bottom:1px solid #ffffff;
+    margin-left:5px;
+    position:absolute;
+    z-index: 9999; 
+}
+.btn-search-click:hover {
+     border-bottom:1px solid #ffffff;
+     position:absolute;
+    z-index: 9999; 
+}
+.e8_btn,.e8_btn_submit,.e8_btn_cancel{
+		background-color:transparent;
+		color:#007aff;
+		word-wrap: normal;
+        border:0;
+        width:60px;
+        height:30px;
+	}
+
+.e8_btn:hover,.e8_btn_submit:hover,.e8_btn_cancel:hover{
+		background-color:#007aff;
+		color:#ffffff;
+		word-wrap: normal;
+        border:0;
+	}
+/*-----搜索更多---------*/

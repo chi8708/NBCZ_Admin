@@ -947,6 +947,7 @@
     <Content Include="easyui-super-theme\README.md" />
     <None Include="Properties\PublishProfiles\NBCZ.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FormExt.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
