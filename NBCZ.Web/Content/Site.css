@@ -60,7 +60,6 @@ input[type="checkbox"].input-validation-error {
      position: absolute; 
      background-color:#ffffff;
      left:0px;
-     right:0px;
      min-height:100px;
 }
 
