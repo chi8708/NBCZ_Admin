@@ -72,7 +72,7 @@ namespace NBCZ
 
                 string functionSql = string.Format(@"select functioncode from dbo.Pub_UserFunction WHERE UserCode='{0}'
                                                 UNION SELECT functioncode FROM dbo.Pub_RoleFunction
-                                                WHERE RoleCode=(SELECT RoleCode FROM Pub_UserRole AS pur WHERE UserCode='{0}')", pubUser.UserCode);
+                                                WHERE RoleCode in (SELECT RoleCode FROM Pub_UserRole AS pur WHERE UserCode='{0}')", pubUser.UserCode);
 
                 var funs = new Pub_FunctionBLL().GetList("StopFlag=0 AND FunctionCode In (" + functionSql + ")");
                 admin.UserFunctions = funs;
