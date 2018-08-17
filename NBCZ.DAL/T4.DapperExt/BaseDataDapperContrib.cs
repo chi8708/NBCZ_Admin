@@ -21,7 +21,7 @@ namespace NBCZ.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public dynamic Insert(T model)
+        public long Insert(T model)
         {
             dynamic r = null;
             using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))

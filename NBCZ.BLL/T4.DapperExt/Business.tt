@@ -39,7 +39,7 @@ using <#=Config.Namespace#>.DAL;
 
 namespace <#=Config.Namespace#>.BLL
 {	
-	public partial class <#=tableName#>BLL:BaseService<Model.<#=tableName#>>
+	public partial class <#=tableName#>BLL:BaseServiceDapperContrib<Model.<#=tableName#>>
     {
        <#if(primaryKey!=null){#>
         /// 删除一条数据

@@ -57,8 +57,8 @@ namespace NBCZ.Web.Areas.Admin.Controllers
                 rep.errorInfo = "父节点不能为空！";
             }
 
-            var r = deptBLL.Insert(model);
-            if (!string.IsNullOrEmpty(r))
+            long r = deptBLL.Insert(model);
+            if (!string.IsNullOrEmpty(r.ToString()))
             {
                 rep.results.data = model.ParentCode;
                 rep.errorInfo = "添加成功";     

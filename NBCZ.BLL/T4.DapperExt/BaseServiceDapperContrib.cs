@@ -17,7 +17,7 @@ namespace NBCZ.BLL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public dynamic Insert(T model)
+        public long Insert(T model)
         {
             return dal.Insert(model);
         }

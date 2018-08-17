@@ -25,33 +25,42 @@ foreach(DbTable dbTable in dtList)
 
 using System;
 using DapperExtensions.Mapper;
+using Dapper.Contrib.Extensions;
 using Newtonsoft.Json;
+
 namespace <#=Config.Namespace#>.Model
 {	
     <#
       if(primaryKey==null||primaryKey.CSharpType=="int"||primaryKey.CSharpType=="long")
      {#>
+[Table("<#=tableName#>")]
 [JsonObject(MemberSerialization.OptIn)]
+
     public sealed partial class <#=tableName#>
     {
      <#}
      else
     {#>
-[JsonObject(MemberSerialization.OptIn)]
-    public sealed partial class <#=tableName#>:BaseEntity<<#=tableName#>>
+[Table("<#=tableName#>")]
+    [JsonObject(MemberSerialization.OptIn)]
+    public sealed partial class <#=tableName#>//:BaseEntity<<#=tableName#>> //使用Dapper.Contrib无需继承
     {
         public <#=tableName#>()
         {
           //varchar主键 报错At least one Key column must be defined.
-          Map(x => x.<#=primaryKey.ColumnName#>).Key(KeyType.Assigned);
-          AutoMap();
+		  //使用Dapper.Contrib无需Map、AutoMap
+          //Map(x => x.<#=primaryKey.ColumnName#>).Key(KeyType.Assigned);
+          //AutoMap();
         }
     <#}#>
 		<# foreach(DbColumn column in dbColList){#>
  /// <summary>
      	/// <#=column.Remark#>
      	/// </summary>
-        [JsonProperty]	
+		 <#if(primaryKey!=null&&column.ColumnName==primaryKey.ColumnName){#>
+[ExplicitKey]
+		 <#}#>
+[JsonProperty]	
 		public <#= column.IsNullCSharpType#> <#=column.ColumnName#> { get; set; }
 
 		<#}#>   

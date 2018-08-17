@@ -65,7 +65,7 @@ namespace NBCZ.Web.Areas.Admin.Controllers
             }
 
             var r = functionBLL.Insert(model);
-            if (!string.IsNullOrEmpty(r))
+            if (!string.IsNullOrEmpty(r.ToString()))
             {
                 rep.results.data = model.ParentCode;
                 rep.errorInfo = "添加成功";

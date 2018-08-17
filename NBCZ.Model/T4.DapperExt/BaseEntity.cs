@@ -1,6 +1,7 @@
 ﻿using System;
 using DapperExtensions.Mapper;
 using Newtonsoft.Json;
+using Dapper.Contrib.Extensions;
 
 namespace NBCZ.Model
 {
