@@ -11,9 +11,11 @@
 using System;
 using DapperExtensions.Mapper;
 using Newtonsoft.Json;
+using Dapper.Contrib.Extensions;
 namespace NBCZ.Model
 {	
     [JsonObject(MemberSerialization.OptIn)]
+    [Table("Pub_User")]
     public sealed partial class Pub_User
     {
      		 /// <summary>
