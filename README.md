@@ -29,7 +29,7 @@
     1. 按Model、DAL、BLL的顺序, 分别保存项目文件 T4.DapperExt→后缀为.tt文件。
 ----------
 
-三、主界面如下：---------------![avatar](https://github.com/chi8708/NBCZ/blob/master/1529981048.jpg)
+三、主界面如下：---------------![avatar](https://github.com/chi8708/NBCZ/blob/NBCZ-Dapper.Contrib/1529981048.jpg)
 
 四、参考文档
 --------------------------
