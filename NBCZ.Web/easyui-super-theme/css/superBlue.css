@@ -324,7 +324,7 @@ ul, ol, dl {
     color: #000;
 }
 
-.panel-body .accordion-body > ul > li {
+.panel-body .accordion-body a {
     height: 36px;
     line-height: 36px;
     padding-left: 25px;
@@ -332,7 +332,7 @@ ul, ol, dl {
     cursor: pointer;
 }
 
-.panel-body .accordion-body > ul > li:hover {
+.panel-body .accordion-body a:hover {
     background-color: #eee;
 }
 

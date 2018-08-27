@@ -151,7 +151,7 @@ namespace NBCZ.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool DeleteByWhere(string where,object param=null)
+        public bool DeleteByWhere(string where, object param = null)
         {
             var tableName = typeof(T).Name;
             StringBuilder sql = new StringBuilder().AppendFormat(" Delete FROM {0} ", tableName);
@@ -163,7 +163,7 @@ namespace NBCZ.DAL
             sql.AppendFormat(" where {0} ", where);
             using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
             {
-                return cn.Execute(sql.ToString(), param)>0;
+                return cn.Execute(sql.ToString(), param) > 0;
             }
         }
         /// <summary>
@@ -209,7 +209,7 @@ namespace NBCZ.DAL
                 t = cn.Get<T>(id);
                 cn.Close();
             }
-            var primaryKey = new MsSqlDbHelper().GetDbTables();
+
             return t;
 
         }
@@ -219,14 +219,14 @@ namespace NBCZ.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public T Get(object id,string keyName)
+        public T Get(object id, string keyName)
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT  TOP 1 * FROM {0} WHERE {1}=@id ", tableName,keyName);
-            var pms=new{id=id};
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT  TOP 1 * FROM {0} WHERE {1}=@id ", tableName, keyName);
+            var pms = new { id = id };
             using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
             {
-                return cn.Query<T>(sql.ToString(),pms).FirstOrDefault();
+                return cn.Query<T>(sql.ToString(), pms).FirstOrDefault();
             }
 
         }
@@ -257,10 +257,11 @@ namespace NBCZ.DAL
         /// <param name="where"></param>
         /// <param name="sort"></param>
         /// <returns></returns>
-        public List<T> GetList(string where, string sort = null, int limits = -1)
+        public List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ", string orderby = "")
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + (limits > 0 ? (" TOP " + limits) : " ") + " * FROM {0} ", tableName);
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + (limits > 0 ? (" TOP " + limits) : " ") + fileds + "  FROM {0} {1} ",
+                tableName, (string.IsNullOrWhiteSpace(orderby) ? "" : (" order by " + orderby)));
             if (!string.IsNullOrEmpty(where))
             {
                 sql.AppendFormat(" where {0} ", where);
@@ -312,7 +313,7 @@ namespace NBCZ.DAL
             using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
             {
                 cn.Open();
-             
+
                 t = cn.GetPage<T>(predicate, sort, page, resultsPerPage).ToList();
                 cn.Close();
             }
@@ -331,7 +332,7 @@ namespace NBCZ.DAL
         /// <param name="resultsPerPage">页大小</param>
         /// <param name="fields">查询字段</param>
         /// <returns></returns>
-        public PageDateRep<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*",Type result=null)
+        public PageDateRep<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*", Type result = null)
         {
             var tableName = typeof(T).Name;
             var p = new DynamicParameters();
@@ -347,7 +348,7 @@ namespace NBCZ.DAL
             using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
             {
 
-                var data = cn.Query<T>("P_ZGrid_PagingLarge", p, commandType: CommandType.StoredProcedure);
+                var data = cn.Query<T>("P_ZGrid_PagingLarge", p, commandType: CommandType.StoredProcedure, commandTimeout: 120);
                 int totalPage = p.Get<int>("@TotalPage");
                 int totalrow = p.Get<int>("@Totalrow");
 
@@ -355,10 +356,10 @@ namespace NBCZ.DAL
                 {
                     code = 0,
                     count = totalrow,
-                    totalPage=totalPage,
+                    totalPage = totalPage,
                     data = data.ToList(),
-                    PageNum=page,
-                    PageSize=resultsPerPage
+                    PageNum = page,
+                    PageSize = resultsPerPage
                 };
 
                 return rep;

@@ -48,6 +48,15 @@ namespace NBCZ
             }
         }
 
+        public static List<Pub_Function> UserFunctions
+        {
+            get
+            {
+                var user = GetPubUser();
+                return user.UserFunctions;
+            }
+        }
+
 
         public static void WriteUser(string userName)
         {
@@ -60,6 +69,13 @@ namespace NBCZ
                 admin.UserName = pubUser.UserName;
                 admin.MobilePhone = pubUser.Tel;
                 admin.DeptCode = pubUser.DeptCode;
+
+                string functionSql = string.Format(@"select functioncode from dbo.Pub_UserFunction WHERE UserCode='{0}'
+                                                UNION SELECT functioncode FROM dbo.Pub_RoleFunction
+                                                WHERE RoleCode in (SELECT RoleCode FROM Pub_UserRole AS pur WHERE UserCode='{0}')", pubUser.UserCode);
+
+                var funs = new Pub_FunctionBLL().GetList("StopFlag=0 AND FunctionCode In (" + functionSql + ")");
+                admin.UserFunctions = funs;
             }
             context.Session["Admin"] = admin;
         }
@@ -76,7 +92,7 @@ namespace NBCZ
                      WriteUser(context.User.Identity.Name);
                 }
             }
-            admin= context.Session["Admin"] as LoginAdmin??new LoginAdmin();         
+            admin = context.Session["Admin"] as LoginAdmin ?? (new LoginAdmin() {UserFunctions=new List<Pub_Function>() });         
 
             return admin;
         }
@@ -90,6 +106,8 @@ namespace NBCZ
             public string DeptCode { get; set; }
 
             public string MobilePhone { get; set; }
+
+            public List<Pub_Function> UserFunctions { get; set; }
         }
     }
 }

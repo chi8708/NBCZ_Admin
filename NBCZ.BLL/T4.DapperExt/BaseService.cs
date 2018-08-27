@@ -79,7 +79,7 @@ namespace NBCZ.BLL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool DeleteByWhere(string where, object param=null)
+        public bool DeleteByWhere(string where, object param = null)
         {
             return dal.DeleteByWhere(where, param);
         }
@@ -112,7 +112,7 @@ namespace NBCZ.BLL
         /// <returns></returns>
         public T Get(object id, string keyName)
         {
-            return dal.Get(id,keyName);
+            return dal.Get(id, keyName);
         }
 
 
@@ -128,7 +128,7 @@ namespace NBCZ.BLL
 
         }
 
-        
+
         /// <summary>
         /// 根据条件查询实体列表
         /// </summary>
@@ -136,9 +136,9 @@ namespace NBCZ.BLL
         /// <param name="sort">排序</param>
         /// <param name="limits">前几条</param>
         /// <returns></returns>
-        public List<T> GetList(string where, string sort = null,int limits=-1)
+        public List<T> GetList(string where, string sort = null, int limits = -1, string fields = " * ", string orderby = "")
         {
-            return dal.GetList(where, sort, limits);
+            return dal.GetList(where, sort, limits, fields, orderby);
 
         }
 
@@ -162,7 +162,7 @@ namespace NBCZ.BLL
         /// <param name="page">页索引</param>
         /// <param name="resultsPerPage">页大小</param>
         /// <returns></returns>
-        public List<T> GetPage(object predicate, IList<ISort> sort, int page,int resultsPerPage)
+        public List<T> GetPage(object predicate, IList<ISort> sort, int page, int resultsPerPage)
         {
             page = page - 1;
             return dal.GetPage(predicate, sort, page, resultsPerPage);
@@ -178,9 +178,9 @@ namespace NBCZ.BLL
         /// <param name="resultsPerPage"></param>
         /// <returns></returns>
 
-        public PageDateRep<T> GetPage(string where, string sort, int page, int resultsPerPage,string fields="*")
+        public PageDateRep<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*")
         {
-            return dal.GetPage(where, sort, page, resultsPerPage);
+            return dal.GetPage(where, sort, page, resultsPerPage, fields);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -174,8 +175,10 @@ namespace NBCZ.Model
        /// <summary>
        /// 用户角色编码
        /// </summary>
+        [JsonProperty]	
         public string RoleCodes { get; set; }
 
+        [JsonProperty]	
         /// <summary>
         /// 用户角色名
         /// </summary>

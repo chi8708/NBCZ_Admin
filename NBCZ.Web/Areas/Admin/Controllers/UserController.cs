@@ -1,6 +1,8 @@
 ﻿
 using NBCZ.BLL;
+using NBCZ.Common;
 using NBCZ.Model;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +54,9 @@ namespace NBCZ.Web.Areas.Admin.Controllers
                 item.RoleCodes = string.Join(",", itemRoles.Select(p => p.RoleCode));
                 item.RoleNames = string.Join(",", itemRoles.Select(p => p.RoleName));
             }
+            //var model = userRoleBLL.GetList("", limits: 1).FirstOrDefault(); 
+            //var roleExt = TinyMapper.Map<Pub_UserRoleExt>(model);
+            //TinyMapperHelper.MapTo<Pub_UserRoleExt>(model);
             FSRep rep = users.MapTo<V_PubUser_Dept>();
             return Json(rep);
         }

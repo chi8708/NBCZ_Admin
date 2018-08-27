@@ -11,7 +11,8 @@
     @Scripts.Render("~/easyui-super/js")
     @Styles.Render("~/easyui-super/css")
 
-
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/FormExt.js"></script>
     <style type="text/css">
         #index {
             padding: 15px;
@@ -72,6 +73,38 @@
 </head>
 <body>
     <div id="index" class="easyui-panel" data-options="fit:true,border:false">
+        <div style="position:relative;z-index:9999; width: 100%;padding-top:5px;">
+            <form id="form1">
+                <div>
+                    <label for="" class="label-top">客户电话：</label>
+                    <input id="txt_TheCall" name="SES_TheCall" class="easyui-textbox" prompt="请输入客户电话号码" />
+                    <label for="" class="label-top">单据号：</label>
+                    <input class="easyui-textbox" name="SES_TelServiceCode" prompt="请输入单据号" />
+                    <input style="width:170px" name="SEGT_SubmitTime" value="@DateTime.Now.ToString("yyyy-MM-dd 00:00:00")" type="text" class="easyui-datetimebox" />-
+                    <input style="width:170px" name="SELT_SubmitTime" value="@DateTime.Now.ToString("yyyy-MM-dd 23:59:59")" type="text" class="easyui-datetimebox" />
+                    <a href="javascript:serchData()" class="easyui-linkbutton danger">搜 索</a>
+                    <a href="javascript: test()" class="easyui-linkbutton danger" id="btn-SearchMore">高级搜索</a>
+                </div>
+                <div style="position: relative;padding-top:5px;">
+                    <div class="search-More">
+                        <label for="" class="label-top">客户电话：</label>
+                        <input id="txt_TheCall" name="SES_TheCall" style="width:170px" class="easyui-textbox" prompt="请输入客户电话号码" />
+
+                        <div class="footer">
+                            <input type="button" value="搜索" class="e8_btn_submit" onclick="onBtnSearchClick()">
+                            <span class="e8_sep_line">|</span>
+                            <input type="button" value="重置" class="e8_btn_cancel" id="btn-reset">
+                            <span class="e8_sep_line">|</span>
+                            <input type="button" value="取消" class="e8_btn_cancel" id="btn-cancel">
+                        </div>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
         <!--表格-->
         <div class="index-l">
             <table id="dg"></table>
@@ -243,7 +276,6 @@
                 </tr>
             </thead>
         </table>
-
     </div>
     <script type="text/javascript">
         $("#myWin-btn").on('click', function () {
