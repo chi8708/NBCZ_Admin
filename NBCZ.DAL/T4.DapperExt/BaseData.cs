@@ -298,6 +298,27 @@ namespace NBCZ.DAL
             return t;
         }
 
+        /// <summary>
+        /// 获取记录条数
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="sort"></param>
+        /// <returns></returns>
+        public int CountByWhere(string where)
+        {
+
+            var tableName = typeof(T).Name;
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT COUNT(1) FROM {0} ", tableName);
+            if (!string.IsNullOrEmpty(where))
+            {
+                sql.AppendFormat(" where {0} ", where);
+            }
+            using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
+            {
+                return cn.ExecuteScalar<int>(sql.ToString());
+            }
+
+        }
 
         /// <summary>
         /// 分页查询

@@ -155,6 +155,16 @@ namespace NBCZ.BLL
 
 
         /// <summary>
+        /// 获取记录条数
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        public int CountByWhere(string where)
+        {
+            return dal.CountByWhere(where);
+        }
+
+        /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="predicate">条件</param>
