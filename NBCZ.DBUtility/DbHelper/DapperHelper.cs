@@ -111,10 +111,10 @@ namespace NBCZ
         /// <summary>
         /// 执行事务
         /// </summary>
-        /// <param name="sql"></param>
-        /// <param name="?"></param>
+        /// <param name="dic"></param>
+        /// <param name="proName"></param>
         /// <returns></returns>
-        public static bool ExecTransaction(Dictionary<string,object> dic) 
+        public static bool ExecTransaction(Dictionary<string, object> dic, List<string> proName = null)
         {
             using (IDbConnection conn = new SqlConnection(connStr))
             {
@@ -125,8 +125,17 @@ namespace NBCZ
                     {
                         foreach (var item in dic)
                         {
-                            conn.Execute(item.Key, item.Value, transaction: transaction);
+                            if (proName != null)
+                            {
+                                conn.Execute(item.Key, item.Value, transaction: transaction,
+                                    commandType: (proName.Contains(item.Key) ? CommandType.StoredProcedure : CommandType.Text));
+                            }
+                            else
+                            {
+                                conn.Execute(item.Key, item.Value, transaction: transaction);
+                            }
                         }
+
                         transaction.Commit();
                         return true;
                     }
@@ -135,7 +144,12 @@ namespace NBCZ
                         transaction.Rollback();
                         return false;
                     }
+                    finally
+                    {
+                        conn.Close();
+                    }
                 }
+
             }
         }
 
