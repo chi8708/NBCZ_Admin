@@ -31,6 +31,21 @@ namespace NBCZ
         }
 
         /// <summary>
+        ///返回table数据
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable ExecuteReaderToTable(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        {
+            using (IDbConnection conn = new SqlConnection(connStr))
+            {
+                var reader = conn.ExecuteReader(sql, param, transaction, commandTimeout, commandType);
+                DataTable tb = new DataTable();
+                tb.Load(reader);
+                return tb;
+            }
+        }
+
+        /// <summary>
         /// 查询返回list
         /// </summary>
         /// <typeparam name="T"></typeparam>
