@@ -7,8 +7,10 @@
 4.删除web下的obj和bin 重新生成项目。不修改可能报错
 路由集合中已存在名为“Admin_default”的路由。路由名称必须唯一。
 
-根据数据库生成代码
+5.根据数据库生成代码
 1.还原数据库db→NBCZ 
 2.配置 DBUtility项目下的DbEntity.ttinclude
 3.配置 web.config 数据库连接
 
+6.代码生成
+按Model、DAL、BLL的顺序, 分别保存项目文件 T4.DapperExt→后缀为.tt文件。
