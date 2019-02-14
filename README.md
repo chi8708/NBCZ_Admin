@@ -36,6 +36,6 @@
 四、参考文档
 --------------------------
 - Dapper：https://github.com/StackExchange/Dapper
-* Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
+- Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
 * layui：http://www.layui.com/doc/
 * fslayui：http://www.itcto.cn/docs/fslayui#/
