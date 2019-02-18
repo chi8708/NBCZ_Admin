@@ -43,6 +43,7 @@ namespace NBCZ.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(Pub_Department model)
         {
             model.DeptCode = deptBLL.GetCode();
@@ -78,6 +79,7 @@ namespace NBCZ.Web.Areas.Admin.Controllers
         /// <param name="parentName"></param>
         /// <returns></returns>
         [Authorization(new string[] { DepartmentAuth.EDIT })]
+        [ValidateInput(false)]
         public ActionResult Edit(string DeptCode)
         {
             var model= deptBLL.Get(DeptCode);

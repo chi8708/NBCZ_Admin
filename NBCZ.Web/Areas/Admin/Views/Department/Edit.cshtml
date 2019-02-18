@@ -14,6 +14,12 @@
     @Scripts.Render(new string[] { "~/fsLayui/plugins/frame/js/frame.js" })
     <link href="~/fsLayui/plugins/ztree/css/zteeSelect.css" rel="stylesheet" />
     <script src="~/fsLayui/plugins/ztree/js/ztreeSelect.js"></script>
+
+    <!--uEditor-->
+    <link href="~/umeditor1_2_2-utf8-net/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8" src="~/umeditor1_2_2-utf8-net/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/umeditor1_2_2-utf8-net/umeditor.min.js"></script>
+    <script type="text/javascript" src="~/umeditor1_2_2-utf8-net/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
     <div class="layui-fluid">
@@ -33,7 +39,7 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">备注：</label>
                 <div class="layui-input-block">
-                    <textarea name="Remark" placeholder="请输入备注" class="layui-textarea">@Model.Remark</textarea>
+                    <textarea name="Remark" id="Remark" placeholder="请输入备注" class="layui-textarea">@Model.Remark</textarea>
                 </div>
             </div>
             <hr />
@@ -53,6 +59,7 @@
             var url = "Index?selectNode=" + rep.results.data;
             reloadFrame("Department/Index", url);
         }
+        var um = UM.getEditor('Remark');
     </script>
 
 </body>
