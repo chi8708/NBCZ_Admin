@@ -39,3 +39,4 @@
 - Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
 * layui：http://www.layui.com/doc/
 * fslayui：http://www.itcto.cn/docs/fslayui#/
+- Dapper.Contrib：https://github.com/StackExchange/Dapper/tree/master/Dapper.Contrib
