@@ -31,6 +31,21 @@ namespace NBCZ
         }
 
         /// <summary>
+        ///返回table数据
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable ExecuteReaderToTable(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        {
+            using (IDbConnection conn = new SqlConnection(connStr))
+            {
+                var reader = conn.ExecuteReader(sql, param, transaction, commandTimeout, commandType);
+                DataTable tb = new DataTable();
+                tb.Load(reader);
+                return tb;
+            }
+        }
+
+        /// <summary>
         /// 查询返回list
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -45,7 +60,7 @@ namespace NBCZ
                 return conn.Query<T>(sql, param, transaction, buffered, commandTimeout, commandType).ToList();
             }
         }
-
+		
 		   /// <summary>
         /// 查询返回第一个元素
         /// </summary>
@@ -60,6 +75,21 @@ namespace NBCZ
                 return conn.QueryFirst<T>(sql, param, transaction, commandTimeout, commandType);
             }
         }
+
+        //   /// <summary>
+        ///// 查询返回第一个元素
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="sql"></param>
+        ///// <param name="param"></param>
+        ///// <returns></returns>
+        //public static T QueryFirst<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        //{
+        //    using (IDbConnection conn = new SqlConnection(connStr))
+        //    {
+        //        return conn.QueryFirst<T>(sql, param, transaction, commandTimeout, commandType);
+        //    }
+        //}
 		
         /// <summary>
         /// 查询返回多个列表结果
@@ -134,8 +164,8 @@ namespace NBCZ
                             {
                                 conn.Execute(item.Key, item.Value, transaction: transaction);
                             }
-
                         }
+
                         transaction.Commit();
                         return true;
                     }

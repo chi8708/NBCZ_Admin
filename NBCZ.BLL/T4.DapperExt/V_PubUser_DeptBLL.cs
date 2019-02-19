@@ -18,9 +18,7 @@ using NBCZ.DAL;
 
 namespace NBCZ.BLL
 {	
-	public partial class V_PubUser_DeptBLL:BaseServiceDapperContrib<Model.V_PubUser_Dept>
-    {
-       
-    }
+
+	public partial class V_PubUser_DeptBLL:BaseServiceDapperContrib<Model.V_PubUser_Dept>{}
 }
 
