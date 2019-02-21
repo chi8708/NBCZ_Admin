@@ -2,7 +2,7 @@
 -------------
 1. NBCZ是一个通用权限系统，用vs2013+sqlserver2008开发工具。
 2. 标准三层结构：
-   1. Repository（DAL仓储层）使用Dapper.Contrib+Dapper开发。
+   1. Repository（DAL仓储层）使用DapperExtensions+Dapper开发。
    2. WEB主要使用MVC5.0+fsLayui+layUi开发。（已添加easyui文件，可自行切换）
 --------  
 
@@ -39,4 +39,10 @@
 - Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
 * layui：http://www.layui.com/doc/
 * fslayui：http://www.itcto.cn/docs/fslayui#/
-- Dapper.Contrib：https://github.com/StackExchange/Dapper/tree/master/Dapper.Contrib
+
+给Aigu赞赏
+-----------------
+<img src="https://github.com/chi8708/NBCZ/blob/master/zs.jpg" />
+
+
+
