@@ -42,7 +42,7 @@
 
 给Aigu赞赏
 -----------------
-<img src="https://github.com/chi8708/NBCZ/blob/master/zswx.jpg"  width="240" style="float:left;margin-left:80px;"/>
-<img src="https://github.com/chi8708/NBCZ/blob/master/zszfb.jpg"  width="240" style="float:left;margin-left:80px;"/>
+<img src="https://github.com/chi8708/NBCZ/blob/master/zs.jpg" />
+
 
 
