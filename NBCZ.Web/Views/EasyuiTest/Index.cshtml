@@ -44,7 +44,7 @@
             }
 
         /*导航右边图标样式*/
-        #nav-fun .accordion-expand, #nav-fun .accordion-collapse {
+        .nav-fun .accordion-expand, .nav-fun .accordion-collapse {
             background: none;
         }
 
@@ -99,10 +99,10 @@
     </div>
     <div id="easyui-layout-west" data-options="region:'west',title:'<input type=text  onchange=searchMenu(this) style=width:90%;height:20px;>',border:false">
         <!--左侧导航-->
-        <div class="easyui-accordion" data-options="border:false,fit:false,selected:true" id="nav-fun">
+        <div class="easyui-accordion nav-fun" data-options="border:false,fit:false,selected:true" id="nav-fun">
             @Html.Raw(ViewBag.NavHtml)
         </div>
-        <div id="nav-fun-search" style="display:none;" data-options="border:false,fit:false,selected:true">
+        <div class="nav-fun" id="nav-fun-search" style="display:none;" data-options="border:false,fit:false,selected:true">
         </div>
     </div>
 
@@ -300,12 +300,13 @@
         $(function () {
 
             tabCloseEven();
-            $('.cs-navi-tab').click(function () {
-                var $this = $(this);
-                var href = $this.attr('src');
-                var title = $this.text();
-                addTab(title, href);
-            });
+            navEven();
+            //$('.cs-navi-tab').click(function () {
+            //    var $this = $(this);
+            //    var href = $this.attr('src');
+            //    var title = $this.text();
+            //    addTab(title, href);
+            //});
 
             //左导航选中样式
             $('#nav-fun').accordion({
@@ -319,6 +320,16 @@
 
         });
 
+
+        //菜单导航事件
+        function navEven() {
+            $('.cs-navi-tab').on('click', function () {
+                var $this = $(this);
+                var href = $this.attr('src');
+                var title = $this.text();
+                addTab(title, href);
+            });
+        }
 
         //菜单搜索
         function searchMenu(src) {
@@ -362,6 +373,8 @@
                 navSearch.find(".panel-header").on('click', function () {
                     $(this).siblings().toggle();
                 }).removeAttr("style").siblings().removeAttr("style");
+
+                navEven();
             }
 
         }
