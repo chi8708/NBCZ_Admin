@@ -432,9 +432,12 @@ function getFrame(sourceName) {
     }
 }
 
-if ("undefined" != typeof authData) {
-    checkAuth(authData)
-}
+$(function () {
+    if ("undefined" != typeof authData) {
+        checkAuth(authData)
+    }
+})
+
 
 //权限检查 元素移除 IE8 不支持forEach
 function checkAuth(arr) {
