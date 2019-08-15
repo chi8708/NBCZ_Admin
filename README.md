@@ -33,14 +33,7 @@
 ---------------
 ![avatar](https://github.com/chi8708/NBCZ/blob/master/1529981048.jpg)
 
-四、参考文档
---------------------------
-- Dapper：https://github.com/StackExchange/Dapper
-- Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
-* layui：http://www.layui.com/doc/
-* fslayui：http://www.itcto.cn/docs/fslayui#/
-
-五、版本
+四、版本
 ---------------
 <table>
 <tr><th>语言/框架</th><th>地址</th><th>协议</th><th>备注</th></tr>
@@ -57,6 +50,15 @@
 	<td>前后端分离</td>
 </tr>
 </table>
+
+五、参考文档
+--------------------------
+- Dapper：https://github.com/StackExchange/Dapper
+- Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
+* layui：http://www.layui.com/doc/
+* fslayui：http://www.itcto.cn/docs/fslayui#/
+
+
 
 给Aigu赞赏
 -----------------
