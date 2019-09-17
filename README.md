@@ -51,7 +51,7 @@
 </tr>
 </table>
 
-五、参考文档
+五、依赖/中间件
 --------------------------
 - Dapper：https://github.com/StackExchange/Dapper
 - Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
