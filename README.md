@@ -33,14 +33,7 @@
 ---------------
 ![avatar](https://github.com/chi8708/NBCZ/blob/master/1529981048.jpg)
 
-四、参考文档
---------------------------
-- Dapper：https://github.com/StackExchange/Dapper
-- Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
-* layui：http://www.layui.com/doc/
-* fslayui：http://www.itcto.cn/docs/fslayui#/
-
-五、版本
+四、版本
 ---------------
 <table>
 <tr><th>语言/框架</th><th>地址</th><th>协议</th><th>备注</th></tr>
@@ -51,12 +44,27 @@
 	<td></td>	
 </tr>
 <tr>
+	<td>.Net Framework + Vue </td>
+	<td><a href="https://github.com/chi8708/NBCZ_Admin_Vue" >.net framework+vue+dapper.contrib</a> </td>
+	<td><a href="https://github.com/chi8708/NBCZ_Admin_Vue/blob/master/LICENSE" target="_blank" >MIT</a></td>
+	<td>前后端分离</td>	
+</tr>
+<tr>
 	<td>.Net Core</td>
 	<td><a href="https://github.com/chi8708/NBCZ_Admin_NetCore" >.net core+iview+dapper.contrib</a> </td>
 	<td><a href="https://github.com/chi8708/NBCZ_Admin_NetCore/blob/master/LICENSE" target="_blank" >MIT</a></td>
 	<td>前后端分离</td>
 </tr>
 </table>
+
+五、依赖/中间件
+--------------------------
+- Dapper：https://github.com/StackExchange/Dapper
+- Dapper-Extensions：https://github.com/tmsmith/Dapper-Extensions
+* layui：http://www.layui.com/doc/
+* fslayui：http://www.itcto.cn/docs/fslayui#/
+
+
 
 给Aigu赞赏
 -----------------
