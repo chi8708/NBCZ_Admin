@@ -4,6 +4,7 @@
 2. 标准三层结构：
    1. Repository（DAL仓储层）使用DapperExtensions+Dapper开发。
    2. WEB主要使用MVC5.0+fsLayui+layUi开发。（已添加easyui文件，可自行切换）
+   3. 在线预览http://122.51.213.11:8000/Admin/Login?ReturnUrl=%2f 登录名：admin 密码：123123
 --------  
 
 二、配置使用
