@@ -66,6 +66,7 @@ namespace NBCZ
                     return Mapper.Map(source, destination);
                 }
                 var maps = Mapper.Configuration.GetAllTypeMaps();
+				Mapper.Reset();
                 Mapper.Initialize(config =>
                 {
                     foreach (var item in maps)
@@ -78,6 +79,7 @@ namespace NBCZ
             }
             catch (InvalidOperationException)
             {
+				Mapper.Reset();
                 Mapper.Initialize(config =>
                 {
                     config.CreateMap(sourceType, destinationType);
