@@ -69,6 +69,7 @@ namespace NBCZ
 				Mapper.Reset();
                 Mapper.Initialize(config =>
                 {
+					config.ValidateInlineMaps = false;
                     foreach (var item in maps)
                     {
                         config.CreateMap(item.SourceType, item.DestinationType);
@@ -82,6 +83,7 @@ namespace NBCZ
 				Mapper.Reset();
                 Mapper.Initialize(config =>
                 {
+					config.ValidateInlineMaps = false;
                     config.CreateMap(sourceType, destinationType);
                 });
             }
