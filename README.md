@@ -68,7 +68,7 @@
 
 交流提升
 -------------
-QQ群:<a href='https://jq.qq.com/?_wv=1027&k=4je1frWy'>851743573  点击加群</a>
+QQ群:点击加群  <a href='https://jq.qq.com/?_wv=1027&k=4je1frWy' target="_blank" >851743573  </a>
 
 给Aigu赞赏
 -----------------
