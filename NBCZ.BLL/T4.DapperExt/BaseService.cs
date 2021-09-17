@@ -43,6 +43,16 @@ namespace NBCZ.BLL
         }
 
         /// <summary>
+        /// 更新某个字段
+        /// </summary>
+        /// <param name="strSet"></param>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
+        public bool UpdateField(string strSet, string strWhere) 
+        {
+            return dal.UpdateField(strSet, strWhere);
+        }
+        /// <summary>
         /// 批量更新
         /// </summary>
         /// <param name="models"></param>
