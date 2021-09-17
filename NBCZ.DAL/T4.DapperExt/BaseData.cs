@@ -92,7 +92,7 @@ namespace NBCZ.DAL
             using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
             {
                 cn.Open();
-                var sql = "UPDATE "+tableName+" SET " + strSet + " WHERE " + strWhere;
+                var sql = $"UPDATE {tableName} SET {strSet} WHERE {strWhere}";
                 r= DapperHelper.Excute(sql: sql);
                 cn.Close();
             }
