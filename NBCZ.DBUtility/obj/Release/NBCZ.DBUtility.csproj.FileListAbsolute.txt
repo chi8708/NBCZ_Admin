@@ -1,0 +1,11 @@
+F:\个人\NBCZ\NBCZ.DBUtility\bin\Release\NBCZ.DBUtility.dll
+F:\个人\NBCZ\NBCZ.DBUtility\bin\Release\NBCZ.DBUtility.pdb
+F:\个人\NBCZ\NBCZ.DBUtility\bin\Release\Dapper.dll
+F:\个人\NBCZ\NBCZ.DBUtility\bin\Release\DapperExtensions.dll
+F:\个人\NBCZ\NBCZ.DBUtility\bin\Release\Dapper.xml
+F:\个人\NBCZ\NBCZ.DBUtility\bin\Release\DapperExtensions.pdb
+F:\个人\NBCZ\NBCZ.DBUtility\obj\Release\NBCZ.DBUtility.csprojAssemblyReference.cache
+F:\个人\NBCZ\NBCZ.DBUtility\obj\Release\NBCZ.DBUtility.csproj.CoreCompileInputs.cache
+F:\个人\NBCZ\NBCZ.DBUtility\obj\Release\NBCZ.DBUtility.csproj.CopyComplete
+F:\个人\NBCZ\NBCZ.DBUtility\obj\Release\NBCZ.DBUtility.dll
+F:\个人\NBCZ\NBCZ.DBUtility\obj\Release\NBCZ.DBUtility.pdb

@@ -1,0 +1,14 @@
+F:\个人\NBCZ\NBCZ.Model\bin\Release\NBCZ.Model.dll
+F:\个人\NBCZ\NBCZ.Model\bin\Release\NBCZ.Model.pdb
+F:\个人\NBCZ\NBCZ.Model\bin\Release\Dapper.dll
+F:\个人\NBCZ\NBCZ.Model\bin\Release\DapperExtensions.dll
+F:\个人\NBCZ\NBCZ.Model\bin\Release\Newtonsoft.Json.dll
+F:\个人\NBCZ\NBCZ.Model\bin\Release\TinyMapper.dll
+F:\个人\NBCZ\NBCZ.Model\bin\Release\Dapper.xml
+F:\个人\NBCZ\NBCZ.Model\bin\Release\DapperExtensions.pdb
+F:\个人\NBCZ\NBCZ.Model\bin\Release\Newtonsoft.Json.xml
+F:\个人\NBCZ\NBCZ.Model\obj\Release\NBCZ.Model.csprojAssemblyReference.cache
+F:\个人\NBCZ\NBCZ.Model\obj\Release\NBCZ.Model.csproj.CoreCompileInputs.cache
+F:\个人\NBCZ\NBCZ.Model\obj\Release\NBCZ.Model.csproj.CopyComplete
+F:\个人\NBCZ\NBCZ.Model\obj\Release\NBCZ.Model.dll
+F:\个人\NBCZ\NBCZ.Model\obj\Release\NBCZ.Model.pdb

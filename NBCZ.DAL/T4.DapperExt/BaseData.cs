@@ -81,6 +81,26 @@ namespace NBCZ.DAL
         }
 
         /// <summary>
+        /// 更新某个字段
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool UpdateField(string strSet,string strWhere)
+        {
+            var tableName = typeof(T).Name;
+            int r = 0;
+            using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
+            {
+                cn.Open();
+                var sql = "UPDATE "+tableName+" SET " + strSet + " WHERE " + strWhere;
+                r= DapperHelper.Excute(sql: sql);
+                cn.Close();
+            }
+
+            return r>0;
+        }
+
+        /// <summary>
         /// 批量更新
         /// </summary>
         /// <param name="models"></param>
