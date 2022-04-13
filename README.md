@@ -56,6 +56,12 @@
 	<td><a href="https://github.com/chi8708/NBCZ_Admin_NetCore/blob/master/LICENSE" target="_blank" >MIT</a></td>
 	<td>前后端分离</td>
 </tr>
+<tr>
+	<td>.Net5</td>
+	<td><a href="https://github.com/chi8708/CNet_Admin_" >.net5+iview+dapper.contrib</a> </td>
+	<td><a href="https://github.com/chi8708/CNet_Admin/blob/main/LICENSE" target="_blank" >MIT</a></td>
+	<td>前后端分离</td>
+</tr>
 </table>
 
 五、依赖/中间件
