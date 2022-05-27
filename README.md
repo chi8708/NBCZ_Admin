@@ -1,6 +1,6 @@
 一、框架概述 <a href="https://github.com/chi8708/NBCZ_Admin_NetCore">转至.net core+vue 前后端分离项目</a>
 -------------
-1. NBCZ是一个通用权限系统，用vs2013+sqlserver2008开发工具。
+1. NBCZ是一个通用权限系统，用vs2013+sqlserver2012开发工具。
 2. 标准三层结构：
    1. Repository（DAL仓储层）使用DapperExtensions+Dapper开发。
    2. WEB主要使用MVC5.0+fsLayui+layUi开发。（已添加easyui文件，可自行切换）
@@ -54,6 +54,12 @@
 	<td>.Net Core</td>
 	<td><a href="https://github.com/chi8708/NBCZ_Admin_NetCore" >.net core+iview+dapper.contrib</a> </td>
 	<td><a href="https://github.com/chi8708/NBCZ_Admin_NetCore/blob/master/LICENSE" target="_blank" >MIT</a></td>
+	<td>前后端分离</td>
+</tr>
+<tr>
+	<td>.Net5</td>
+	<td><a href="https://github.com/chi8708/CNet_Admin" >.net5+iview+dapper.contrib</a> </td>
+	<td><a href="https://github.com/chi8708/CNet_Admin/blob/main/LICENSE" target="_blank" >MIT</a></td>
 	<td>前后端分离</td>
 </tr>
 </table>
