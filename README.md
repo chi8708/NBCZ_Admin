@@ -5,7 +5,7 @@
    1. Repository（DAL仓储层）使用DapperExtensions+Dapper开发。
    2. WEB主要使用MVC5.0+fsLayui+layUi开发。（已添加easyui文件，可自行切换）
    3. 在线预览http://106.14.91.48:8918/ 登录名：admin 密码：123123
-   4. ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+3. ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
    *注：此版本不再维护，已升级至<a href="https://github.com/chi8708/CNet_Admin" >.net5前后端分离项目</a>* </sub> 
 --------  
 
