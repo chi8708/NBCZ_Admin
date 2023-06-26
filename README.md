@@ -1,4 +1,4 @@
-一、框架概述 <a href="[https://github.com/chi8708/CNet_Admin](https://github.com/chi8708/CNet_Admin)">转至.net5+vue 前后端分离项目</a>
+一、框架概述 <a href="https://github.com/chi8708/CNet_Admin">转至.net5+vue 前后端分离项目</a>
 -------------
 1. NBCZ是一个通用权限系统，用vs2017+sqlserver2012开发工具。
 2. 标准三层结构：
