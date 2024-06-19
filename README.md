@@ -86,6 +86,5 @@ Git笔记公众号
 -----------------
 <img src="https://github.com/chi8708/NBCZ/blob/master/zs.jpg" />
 
-### Aigu开发 github热门排行，微信小程序看源码
-<img src="tg.jpg" style="width:260px;" />
+
 
